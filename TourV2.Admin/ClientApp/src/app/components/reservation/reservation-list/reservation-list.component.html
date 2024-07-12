@@ -1,0 +1,97 @@
+
+<app-breadcrumb [title]="'RESERVATIONS' | translate" [subTitle]="'RESERVATION_LIST' | translate"></app-breadcrumb>
+<div class="card recent-orders-box mb-30">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3>{{'RESERVATION_LIST' | translate}}</h3>
+
+        <div class="dropdown">
+            <button routerLink="/reservation/manage" class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class='bx bx-plus' ></i>
+            </button>
+            
+        </div>
+    </div>
+
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>{{'TUR' | translate}}</th>
+                        <th>{{'PERIOD' | translate}}</th>
+                        <th>{{'TOTAL-NUMBER-OF-RESERVATİONS' | translate}}</th>
+                        <th>{{'STATUS' | translate}}</th>
+
+                        <th></th>
+                        
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let item of reservations">
+                        <td>{{item.activeTour.tourRecord.title}}</td>
+                        <td>{{item.activeTour.periodRecord.title}} ({{item.activeTour.startDate | date:'dd'}}/{{item.activeTour.endDate | date:'dd MM YYYY'}}) </td>
+                        
+                        <td class="name">{{item.activeTour.quota}}</td>
+
+                        <td>
+                            <span class="badge {{item.isCompleted? 'badge-primary': 'badge-danger'}} badge-primary">{{item.isActive ? 'Tamamlandı':'Beklemede'}}</span>
+                        </td>
+                        
+                        <td>
+                            <a class="btn btn-sm btn-warning ml-3" routerLink="/reservation/generalbookinglist/{{item.activeTourId}}">
+                            <i class='bx bx-show'></i> {{'VİEW-RESERVATİONS' | translate}}
+                            </a>
+                            <a class="btn btn-sm btn-danger ml-3" (click)="deleteReservation(item)">
+                                <i class='bx bx-show'></i> {{'DELETE' | translate}}
+                                </a>
+                        </td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <!-- <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>{{'CODE' | translate}}</th>
+                        <th>{{'FIRST_NAME' | translate}} {{'LAST_NAME' | translate}}</th>
+                        <th>{{'TUR' | translate}}</th>
+                        <th>{{'PERIOD' | translate}}</th>
+                        <th>{{'STATUS' | translate}}</th>
+                        <th></th>
+                        
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let item of reservations">
+                        <td class="name">{{item.reservationCode}} </td>
+                        <td class="name">{{item.contactFirstName}} {{item.contactLastName}}</td>
+                        <td>{{item.activeTour.tourRecord.title}}</td>
+                        <td>{{item.activeTour.periodRecord.title}} ({{item.activeTour.startDate | date:'dd'}}/{{item.activeTour.endDate | date:'dd MM YYYY'}}) </td>
+                      
+                        <td>
+                            <span class="badge {{item.isCompleted? 'badge-primary': 'badge-danger'}} badge-primary">{{item.isActive ? 'Tamamlandı':'Beklemede'}}</span>
+                        </td>
+                        <td>
+                            <a class="btn btn-sm btn-warning ml-3" routerLink="/reservation/manage/{{item.code}}">
+                            <i class='bx bx-show'></i> {{'VIEW' | translate}}
+                            </a>
+                            <a class="btn btn-sm btn-danger ml-3" (click)="deleteReservation(item)">
+                                <i class='bx bx-show'></i> {{'DELETE' | translate}}
+                                </a>
+                        </td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+        </div>
+    </div> -->
+</div>

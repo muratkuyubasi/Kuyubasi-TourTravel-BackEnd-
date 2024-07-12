@@ -1,0 +1,136 @@
+<div class="welcome-area">
+    <div class="row m-0 align-items-center">
+        <div class="col-lg-5 col-md-12 p-0">
+            <div class="welcome-content">
+                <h1 class="mb-2">{{'HI' | translate}}, {{appUserAuth.firstName}} {{appUserAuth.lastName}}</h1>
+                <p class="mb-0">{{'WELCOME_TOUR_&_TRAVEL_PANEL' | translate}}</p>
+            </div>
+        </div>
+
+        <div class="col-lg-7 col-md-12 p-0">
+            <div class="welcome-img">
+                <img src="assets/img/newpanelwelcome.png" alt="image">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-3 col-md-6">
+        <div class="stats-card-box">
+            <div class="icon-box">
+                <img src="assets/img/statistics/reservation.png" alt="image">
+            </div>
+            <span class="sub-title">{{'TOTAL_RESERVATIONS' | translate}}</span>
+            <h3>{{totalNewReservationCount}}</h3>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+        <div class="stats-card-box">
+            <div class="icon-box">
+                <img src="assets/img/statistics/tourequest.png" alt="image">
+            </div>
+            <span class="sub-title">{{'TOUR_Request' | translate}}</span>
+            <h3>{{totalReservationCount}}</h3>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+        <div class="stats-card-box">
+            <div class="icon-box">
+                <img src="assets/img/statistics/contactrequest.png" alt="image">
+            </div>
+            <span class="sub-title">{{'CONTACT_Request' | translate}}</span>
+            <h3>{{totalActiveTourCount}}</h3>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+        <div class="stats-card-box">
+            <div class="icon-box">
+                <img src="assets/img/statistics/totaltur.png" alt="image">
+            </div>
+            <span class="sub-title">{{'TOTAL_TOURS' | translate}}</span>
+            <h3>{{totalTourCount}}</h3>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="card mb-30">
+    <div class="card-body">
+        <app-web-analytics></app-web-analytics>
+    </div>
+</div> -->
+
+<div class="card recent-orders-box mb-30">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3>{{'LAST_RESERVATION' | translate}}</h3>
+
+       
+    </div>
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>{{'CODE' | translate}}</th>
+                        <th>{{'FIRST_NAME' | translate}} {{'LAST_NAME' | translate}}</th>
+                        <th>{{'TOUR' | translate}}</th>
+                        <th>{{'PERIOD' | translate}}</th>
+                        <th>{{'DATE_TIME' | translate}}</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let item of lastReservations">
+                        <td class="name">{{item.reservationCode}}</td>
+                        <td class="name">{{item.contactFirstName}} {{item.contactLastName}}</td>
+                        <td>{{item.activeTour?.tourRecord.title}}</td>
+                        <td>{{item.activeTour?.periodRecord.title}}</td>
+                        <td><span class="badge badge-primary">{{item.activeTour?.startDate | date:'dd -MM-yyyy'}}</span></td>
+                        <td><button [routerLink]="'/reservation/manage/'+item.code">{{'DETAIL' | translate}}</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="card recent-orders-box mb-30">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3>{{'UPCOMING_TOURS' | translate}}</h3>
+
+       
+    </div>
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>{{'CODE' | translate}}</th>
+                        <th>{{'FIRST_NAME' | translate}} {{'LAST_NAME' | translate}}</th>
+                        <th>{{'TOUR' | translate}}</th>
+                        <th>{{'PERIOD' | translate}}</th>
+                        <th>{{'DATE_TIME' | translate}}</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let item of upcomingTours">
+                        <td class="name">{{item.tourRecord.title}}</td>
+                        <td class="name">{{item.regionRecord.title}}</td>
+                        <td>{{item.periodRecord.title}}</td>
+                        <td>{{item.periodRecord.title}}</td>
+                        <td><span class="badge badge-primary">{{item.startDate | date:'dd -MM-yyyy'}}</span></td>
+                        <td><button [routerLink]="'/activetour/manage/'+item.id">{{'DETAIL' | translate}}</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,6 @@
+.btn-box button{
+    padding: 3px 10px !important;
+}
+.btn-danger{
+    background-color: red;
+}

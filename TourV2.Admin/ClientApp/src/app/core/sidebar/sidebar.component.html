@@ -1,0 +1,494 @@
+<div class="sidemenu-area">
+    <div class="sidemenu-header">
+        <a href="/" class="navbar-brand d-flex align-items-center">
+            <img src="assets/img/ttp-logo.png" alt="image">
+            <!-- <span>TTP</span> -->
+        </a>
+
+        <div class="burger-menu d-none d-lg-block">
+            <span class="top-bar"></span>
+            <span class="middle-bar"></span>
+            <span class="bottom-bar"></span>
+        </div>
+
+        <div class="responsive-burger-menu d-block d-lg-none">
+            <span class="top-bar"></span>
+            <span class="middle-bar"></span>
+            <span class="bottom-bar"></span>
+        </div>
+    </div>
+
+    <div class="sidemenu-body">
+        <ul class="sidemenu-nav metisMenu h-100" id="sidemenu-nav" data-simplebar>
+          
+
+            <li class="nav-item">
+                <a routerLink="/" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                    <!-- <span class="icon"><i class='bx bx-home-circle'></i></span> -->
+                    <img src="assets/img/leftmenu/home.png" alt="image">
+
+                    <span class="menu-title" style="margin-left: 5%;">{{'HOME' | translate}}</span>
+                </a>
+            </li>
+
+           
+
+
+
+
+            <li class="nav-item" *hasClaim="['activetour_list']">
+                <a *hasClaim="['activetour_list']" href="#" class="collapsed-nav-link nav-link" aria-expanded="false">
+                    <!-- <span class="icon"><i class='bx bx-map-alt'></i></span> -->
+                    <img src="assets/img/leftmenu/AKTIF_TURLAR.png" alt="image">
+
+                    <span class="menu-title"  style="margin-left: 5%;">{{'ACTIVE_TOURS' | translate}}</span>
+                </a>
+                <ul class="sidemenu-nav-second-level">
+                    <li class="nav-item" *hasClaim="'activetour_list'">
+                        <a [routerLink]="['/activetour']" class="nav-link">
+                            <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
+
+                            <span class="menu-title"  style="margin-left: 5%;">{{'List' | translate}}</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" *hasClaim="'activetour_add'">
+                        <a [routerLink]="['/activetour/manage']" class="nav-link" aria-expanded="false">
+                            <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
+
+                            <span class="menu-title"  style="margin-left: 5%;">{{'ADD_NEW' | translate}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item" *hasClaim="['reservation_list']">
+                <a *hasClaim="['reservation_list']" href="#" class="collapsed-nav-link nav-link" aria-expanded="false">
+                    <!-- <span class="icon"><i class='bx bx-map-alt'></i></span> -->
+                    <img src="assets/img/leftmenu/TURLAR.png" alt="image">
+
+                    <span class="menu-title"  style="margin-left: 5%;">{{'RESERVATIONS' | translate}}</span>
+                </a>
+                <ul class="sidemenu-nav-second-level">
+                    <li class="nav-item" *hasClaim="'reservation_list'">
+                        <a [routerLink]="['/reservation']" class="nav-link">
+                            <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
+                            <span class="menu-title"  style="margin-left: 5%;">{{'List' | translate}}</span>
+                        </a>
+                    </li>
+                    
+                    <!-- <li class="nav-item" >
+                        <a [routerLink]="['reservation/generalbookinglist']" class="nav-link">
+                            <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
+                            <span class="menu-title"  style="margin-left: 5%;">{{'List' | translate}}</span>
+                        </a>
+                    </li> -->
+
+                    <li class="nav-item" *hasClaim="'reservation_add'">
+                        <a [routerLink]="['/reservation/manage']" class="nav-link" aria-expanded="false">
+                            <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
+                            <span class="menu-title"  style="margin-left: 5%;">{{'ADD_NEW' | translate}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+
+            <li class="nav-item-title" *hasClaim="['period_list','category_list','region_list','departure_list']">
+                {{'TOUR_DESCRIPTIONS' | translate}}
+            </li>
+
+            <li class="nav-item">
+                <a *hasClaim="['tour_add', 'tour_list']" href="#" class="collapsed-nav-link nav-link" aria-expanded="false">
+                    <!-- <span class="icon"><i class='bx bx-menu'></i></span> -->
+                    <img src="assets/img/leftmenu/TURLAR.png" alt="image">
+
+                    <span class="menu-title"  style="margin-left: 5%;">{{'TOURS' | translate}}</span>
+                </a>
+
+                <ul class="sidemenu-nav-second-level">
+                    <li class="nav-item" *hasClaim="'tour_list'">
+                        <a [routerLink]="['/tour']" class="nav-link">
+                            <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
+                            <span class="menu-title"  style="margin-left: 5%;">{{'List' | translate}}</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" *hasClaim="'tour_add'">
+                        <a [routerLink]="['/tour/manage']" class="nav-link" aria-expanded="false">
+                            <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
+                            <span class="menu-title"  style="margin-left: 5%;">{{'ADD_NEW' | translate}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+             <li class="nav-item">
+                <a *hasClaim="['category_add', 'category_list']" href="#" class="collapsed-nav-link nav-link" aria-expanded="false">
+                    <img src="assets/img/leftmenu/KATEGORILER.png" alt="image">
+                    <span class="menu-title"  style="margin-left: 5%;">{{'CATEGORIES' | translate}}</span>
+                </a>
+
+                <ul class="sidemenu-nav-second-level">
+                    <li class="nav-item" *hasClaim="'category_list'">
+                        <a [routerLink]="['/category']" class="nav-link">
+                            <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
+                            <span class="menu-title"  style="margin-left: 5%;">{{'List' | translate}}</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" *hasClaim="'category_add'">
+                        <a [routerLink]="['/category/manage']" class="nav-link" aria-expanded="false">
+                            <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
+                            <span class="menu-title" >{{'ADD_NEW' | translate}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a *hasClaim="['period_add', 'period_list']" href="#" class="collapsed-nav-link nav-link" aria-expanded="false">
+                    <img src="assets/img/leftmenu/PERIYODLAR.png" alt="image">
+                    <span class="menu-title"  style="margin-left: 5%;">{{'PERIODS' | translate}}</span>
+                </a>
+
+                <ul class="sidemenu-nav-second-level">
+                    <li class="nav-item" *hasClaim="'period_list'">
+                        <a [routerLink]="['/period']" class="nav-link">
+                            <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
+                            <span class="menu-title">{{'List' | translate}}</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" *hasClaim="'period_add'">
+                        <a [routerLink]="['/period/manage']" class="nav-link" aria-expanded="false">
+                            <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
+                            <span class="menu-title">{{'ADD_NEW' | translate}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a *hasClaim="['region_add', 'region_list']" href="#" class="collapsed-nav-link nav-link" aria-expanded="false">
+                    <img src="assets/img/leftmenu/BOLGELER.png" alt="image">
+                    <span class="menu-title"  style="margin-left: 5%;">{{'REGIONS' | translate}}</span>
+                </a>
+
+                <ul class="sidemenu-nav-second-level">
+                    <li class="nav-item" *hasClaim="'region_list'">
+                        <a [routerLink]="['/region']" class="nav-link">
+                            <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
+                            <span class="menu-title">{{'List' | translate}}</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" *hasClaim="'region_add'">
+                        <a [routerLink]="['/region/manage']" class="nav-link" aria-expanded="false">
+                            <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
+                            <span class="menu-title">{{'ADD_NEW' | translate}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a *hasClaim="['departure_add', 'departure_list']" href="#" class="collapsed-nav-link nav-link" aria-expanded="false">
+                    <img src="assets/img/leftmenu/HAREKET_NOKTALARIpng.png" alt="image">
+                    <span class="menu-title"  style="margin-left: 5%;">{{'DEPARTURES' | translate}}</span>
+                </a>
+
+                <ul class="sidemenu-nav-second-level">
+                    <li class="nav-item" *hasClaim="'departure_list'">
+                        <a [routerLink]="['/departure']" class="nav-link">
+                            <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
+                            <span class="menu-title">{{'List' | translate}}</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" *hasClaim="'departure_add'">
+                        <a [routerLink]="['/departure/manage']" class="nav-link" aria-expanded="false">
+                            <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
+                            <span class="menu-title">{{'ADD_NEW' | translate}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item-title">
+                {{'SITE_DESCRIPTIONS' | translate}}
+            </li>
+
+            <li class="nav-item" *hasClaim="['activetour_list']">
+                <a *hasClaim="['activetour_list']" href="#" class="collapsed-nav-link nav-link" aria-expanded="false">
+                    <!-- <span class="icon"><i class='bx bx-map-alt'></i></span> -->
+                    <img src="assets/img/leftmenu/slider.png" alt="image">
+
+                    <span class="menu-title"  style="margin-left: 5%;">{{'SLIDER' | translate}}</span>
+                </a>
+                <ul class="sidemenu-nav-second-level">
+                    <li class="nav-item" *hasClaim="'activetour_list'">
+                        <a [routerLink]="['/add-listing']" class="nav-link">
+                            <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
+                            <!-- <img src="assets/img/leftmenu/REZERVASYONLAR.png" alt="image"> -->
+
+                            <span class="menu-title"  style="margin-left: 5%;">{{'List' | translate}}</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" *hasClaim="'activetour_add'">
+                        <a [routerLink]="['/activetour/manage']" class="nav-link" aria-expanded="false">
+                            <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
+
+                            <span class="menu-title"  style="margin-left: 5%;">{{'ADD_NEW' | translate}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+               
+            <li class="nav-item">
+                <a *hasClaim="['role_add', 'role_list']" href="#" class="collapsed-nav-link nav-link" aria-expanded="false">
+                    <img src="assets/img/leftmenu/ROLLER.png" alt="image">
+                    <span class="menu-title"  style="margin-left: 5%;">{{'ROLES' | translate}}</span>
+                </a>
+
+                <ul class="sidemenu-nav-second-level">
+                    <li class="nav-item" *hasClaim="'role_list'">
+                        <a [routerLink]="['/roles']" class="nav-link">
+                            <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
+                            <span class="menu-title">{{'List' | translate}}</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" *hasClaim="'role_add'">
+                        <a [routerLink]="['/roles/manage']" class="nav-link" aria-expanded="false">
+                            <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
+                            <span class="menu-title">{{'ADD_NEW' | translate}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a *hasClaim="['user_list', 'user_add', 'user_role_edit']" href="#" class="collapsed-nav-link nav-link" aria-expanded="false">
+                    <img src="assets/img/leftmenu/KULLANICILAR.png" alt="image">
+                    <span class="menu-title"  style="margin-left: 5%;">{{'USERS' | translate}}</span>
+                </a>
+
+                <ul class="sidemenu-nav-second-level">
+                    <li class="nav-item" *hasClaim="'user_list'">
+                        <a [routerLink]="['/users']" class="nav-link">
+                            <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
+                            <span class="menu-title">{{'List' | translate}}</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" *hasClaim="'user_add'">
+                        <a [routerLink]="['/users/manage']" class="nav-link" aria-expanded="false">
+                            <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
+                            <span class="menu-title">{{'ADD_NEW' | translate}}</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" *hasClaim="'user_role_edit'">
+                        <a [routerLink]="['/roles/users']" class="nav-link" aria-expanded="false">
+                            <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
+                            <span class="menu-title">{{'USER_ROLES' | translate}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+           
+            
+
+            <li class="nav-item">
+                <a *hasClaim="['email_template_list', 'send_email_list', 'email_smtp_list']" href="#" class="collapsed-nav-link nav-link" aria-expanded="false">
+                    <img src="assets/img/leftmenu/EPOSTA.png" alt="image">
+                    <span class="menu-title"  style="margin-left: 5%;">{{'EMAIL' | translate}}</span>
+                </a>
+
+                <ul class="sidemenu-nav-second-level">
+                    <li class="nav-item" *hasClaim="'email_smtp_list'">
+                        <a [routerLink]="['/email-smtp']" class="nav-link">
+                            <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
+                            <span class="menu-title">{{'SMTP_SETTINGS' | translate}}</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" *hasClaim="'email_template_list'">
+                        <a [routerLink]="['/email-template']" class="nav-link" aria-expanded="false">
+                            <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
+                            <span class="menu-title">{{'EMAIL_TEMPLATE' | translate}}</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" *hasClaim="'send_email_list'">
+                        <a [routerLink]="['/send-email']" class="nav-link" aria-expanded="false">
+                            <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
+                            <span class="menu-title">{{'SEND_EMAIL' | translate}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a *hasClaim="['app_settings_list', 'action_list', 'page_list', 'page_action_edit']" href="#" class="collapsed-nav-link nav-link" aria-expanded="false">
+                    <img src="assets/img/leftmenu/AYARLAR.png" alt="image">
+                    <span class="menu-title"  style="margin-left: 5%;">{{'SETTINGS' | translate}}</span>
+                </a>
+
+                <ul class="sidemenu-nav-second-level">
+                    <li class="nav-item" *hasClaim="'app_settings_list'">
+                        <a [routerLink]="['/appsettings']" class="nav-link">
+                            <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
+                            <span class="menu-title">{{'APP_SETTINGS' | translate}}</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" *hasClaim="'action_list'">
+                        <a [routerLink]="['/actions']" class="nav-link" aria-expanded="false">
+                            <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
+                            <span class="menu-title">{{'ACTION' | translate}}</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" *hasClaim="'page_list'">
+                        <a [routerLink]="['/pages']" class="nav-link" aria-expanded="false">
+                            <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
+                            <span class="menu-title">{{'PAGES' | translate}}</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" *hasClaim="'page_action_edit'">
+                        <a [routerLink]="['/page-action']" class="nav-link" aria-expanded="false">
+                            <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
+                            <span class="menu-title">{{'PAGE_ACTION' | translate}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a *hasClaim="['login_audit_list', 'system_logs_list']" href="#" class="collapsed-nav-link nav-link" aria-expanded="false">
+                    <img src="assets/img/leftmenu/KAYITLAR.png" alt="image">
+                    <span class="menu-title"  style="margin-left: 5%;">{{'LOGS' | translate}}</span>
+                </a>
+
+                <ul class="sidemenu-nav-second-level">
+                    <li class="nav-item" *hasClaim="'login_audit_list'">
+                        <a [routerLink]="['/login-audit']" class="nav-link">
+                            <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
+                            <span class="menu-title">{{'LOGIN_AUDIT' | translate}}</span>
+                        </a>
+                    </li>
+
+                    <!-- <li class="nav-item" *hasClaim="'system_logs_list'">
+                        <a [routerLink]="['/logs']" class="nav-link" aria-expanded="false">
+                            <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
+                            <span class="menu-title">{{'ERROR_LOGS' | translate}}</span>
+                        </a>
+                    </li> -->
+                    <li class="nav-item" *hasClaim="'system_logs_list'">
+                        <a [routerLink]="['/application/education-periods']" class="nav-link" aria-expanded="false">
+                            <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
+                            <span class="menu-title">{{'Values-Education-Form' | translate}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <!-- <li class="nav-item">
+                <a href="#" class="collapsed-nav-link nav-link" aria-expanded="false">
+                    <span class="icon"><i class="fa-solid fa-kaaba"></i></span>
+                    <span class="menu-title">{{'HAJJ-UMRAH_APPLICATION' | translate}}</span>
+                </a>
+
+                <ul class="sidemenu-nav-second-level">
+                    <li class="nav-item" >
+                        <a [routerLink]="['/application/education-periods']" class="nav-link">
+                            <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
+                            <span class="menu-title">{{'HAJJ_APPLICATION_LIST' | translate}}</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a [routerLink]="['/application/umrah-periods']" class="nav-link" aria-expanded="false">
+                            <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
+                            <span class="menu-title">{{'UMRAH_APPLICATION_LIST' | translate}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li> -->
+            <li class="nav-item">
+                <a *hasClaim="['requests_list', 'requests_add','requests_edit','requests_delete']" href="#" class="collapsed-nav-link nav-link" aria-expanded="false">
+                    <img src="assets/img/leftmenu/TALEPLERpng.png" alt="image">
+                    <span class="menu-title"  style="margin-left: 5%;">{{'REQUESTS' | translate}}</span>
+                </a>
+
+                <ul class="sidemenu-nav-second-level">
+                    <li class="nav-item" *hasClaim="'requests_list'">
+                        <a [routerLink]="['/app-email']" class="nav-link">
+                            <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
+                            <span class="menu-title">{{'CONTACT_REQUESTS' | translate}}</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" *hasClaim="'requests_list'">
+                        <a [routerLink]="['/reviews']" class="nav-link" aria-expanded="false">
+                            <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
+                            <span class="menu-title">{{'COMMENT_REQUESTS' | translate}}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" *hasClaim="'requests_list'">
+                        <a [routerLink]="['/app-calendar']" class="nav-link" aria-expanded="false">
+                            <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
+                            <span class="menu-title">{{'TOUR_REQUESTS' | translate}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <!-- <li class="nav-item-title">
+                Talepler
+            </li> -->
+
+            <!-- <li class="nav-item">
+                <a href="#" class="collapsed-nav-link nav-link" aria-expanded="false">
+                    <img src="assets/img/leftmenu/TALEPLERpng.png" alt="image">
+                    <span class="menu-title">Talepler</span>
+                </a>
+
+                <ul class="sidemenu-nav-second-level">
+                 
+                    
+            <li class="nav-item">
+                <a routerLink="/app-email" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                    <span class="icon"><i class='bx bx-envelope'></i></span>
+                    <span class="menu-title">İletişim Talepleri</span>
+                    <span class="badge">{{getlistModel.length}}</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a routerLink="/reviews" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                    <span class="icon"><i class='bx bx-star'></i></span>
+                    <span class="menu-title">Yorum Talepleri</span>
+                    <span class="badge">{{getcommentModel.data.length}}</span>
+
+                </a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="/app-calendar" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                    <span class="icon"><i class='bx bx-star'></i></span>
+                    <span class="menu-title">Tur Talepleri</span>
+                    <span class="badge">{{getcommentModel.data.length}}</span>
+
+                </a>
+            </li>
+                </ul>
+            </li>  -->
+        </ul>
+    </div>
+</div>

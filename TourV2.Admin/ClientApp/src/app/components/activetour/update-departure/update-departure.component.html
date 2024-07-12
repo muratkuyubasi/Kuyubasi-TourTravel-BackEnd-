@@ -1,0 +1,44 @@
+<div class="close-btn-modal" (click)="onNoClick()">
+  <i class="fa fa-times"></i>
+</div>
+<div class="container">
+  <h1 mat-dialog-title>{{'UPDATE' | translate}}</h1>
+  <div mat-dialog-content>
+    <form [formGroup]="updateForm">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label>{{'DEPARTURE' | translate}}</label>
+          <select formControlName="departureRecordId" name="departureRecordId" class="form-control" placeholder="Hareket Noktası Seçiniz">
+            <option value="">Hareket Noktası Seçiniz</option>
+            <option *ngFor="let item of departures" [value]="item.departureRecordId" > {{item.title}} </option>
+
+        </select>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group">
+          <label>{{'DEPARTURE_TIME' | translate}}</label>
+          <input type="datetime-local" class="form-control" formControlName="departureTime" placeholder="{{'departureTime' | translate}}">
+        </div>
+      </div>
+      <div class="col-md-12  form-group">
+        <div class="sidebar-widgets">
+          <label><i class='bx bx-briefcase-alt'></i> İlk Hareket?:</label>
+          <div class=" box">
+              <span class="title">Evet</span>
+              <label class="switch">
+                  <input type="checkbox" formControlName="isMain">
+                  <span></span>
+              </label>
+          </div>
+      </div>
+      </div>
+    </form>
+  </div>
+  <div mat-dialog-actions>
+    <button class="btn btn-success btn-sm m-right-10" (click)="saveData()" cdkFocusInitial> <i
+        class="fas fa-save"></i> {{'SAVE' | translate}}</button>
+    <button class="btn btn-danger btn-sm" (click)="onNoClick()"><i class="fas fa-times-circle"></i> {{'CANCEL' |
+      translate}}</button>
+  </div>
+</div>

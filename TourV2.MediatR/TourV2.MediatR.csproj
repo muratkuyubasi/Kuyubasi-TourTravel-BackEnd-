@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Commands\Front\Add\**" />
+    <Compile Remove="Commands\Front\Delete\**" />
+    <Compile Remove="Commands\Front\Update\**" />
+    <EmbeddedResource Remove="Commands\Front\Add\**" />
+    <EmbeddedResource Remove="Commands\Front\Delete\**" />
+    <EmbeddedResource Remove="Commands\Front\Update\**" />
+    <None Remove="Commands\Front\Add\**" />
+    <None Remove="Commands\Front\Delete\**" />
+    <None Remove="Commands\Front\Update\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="FluentValidation" Version="11.2.0" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.2.0" />
+    <PackageReference Include="MediatR" Version="10.0.1" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TourV2.Common\TourV2.Common.csproj" />
+    <ProjectReference Include="..\TourV2.Data\TourV2.Data.csproj" />
+    <ProjectReference Include="..\TourV2.Domain\TourV2.Domain.csproj" />
+    <ProjectReference Include="..\TourV2.Helper\TourV2.Helper.csproj" />
+    <ProjectReference Include="..\TourV2.Repository\TourV2.Repository.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Commands\Cost\" />
+    <Folder Include="Handlers\Front\" />
+    <Folder Include="Handlers\Cost\" />
+    <Folder Include="Queries\Front\" />
+  </ItemGroup>
+
+</Project>

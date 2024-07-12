@@ -1,0 +1,72 @@
+<app-breadcrumb [title]="'RESERVATIONS' | translate" [subTitle]="'RESERVATION_LIST' | translate"></app-breadcrumb>
+<div class="card recent-orders-box mb-30">
+    <div class="col-md-auto col-sm-auto">
+        <h4 class="widget-title">
+          <button class="btn btn-success btn-sm m-right-10" >
+            <i class="fa-solid fa-download"></i>
+            {{ 'EXPORT_EXCEL' | translate }}
+          </button>
+        </h4>
+      </div>
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3>{{'RESERVATION_LIST' | translate}}</h3>
+
+        <div class="dropdown">
+            <button routerLink="/reservation/manage" class="dropdown-toggle" type="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <i class='bx bx-plus'></i>
+            </button>
+
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>{{'BOOKİNG-CODE' | translate}}</th>
+                        <th>{{'FIRST_NAME' | translate}} {{'LAST_NAME' | translate}}</th>
+                        <th>{{'PHONE-NUMBER' | translate}}</th>
+                        <th>{{'EMAİL-ADRESS' | translate}}</th>
+                        <th>{{'TOUR-PRICES' | translate}}</th>
+                        <th>{{'QUESTİONNAİRE' | translate}}</th>
+
+                        <th>{{'STATUS' | translate}}</th>
+                        <th></th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let item of reservations">
+                        <td class="name">{{item?.reservationCode}}</td>
+                        <td class="name">{{item?.contactFirstName}} {{item?.contactLastName }}</td>
+                        <td class="name">{{item?.contactPhone}}</td>
+                        <td class="name">{{item?.contactEmail}}</td>
+                        <td class="name">{{item?.totalAmount}}</td>
+                        <td>
+                            <span class="badge {{item.isCompleted? 'badge-primary': 'badge-danger'}} badge-primary">{{item.isActive ? 'Tamamlandı':'Beklemede'}}</span>
+                        </td>
+
+                        <!-- <td class="name">{{item?.contactFirstName}} {{item?.contactLastName}}</td>
+                        <td>{{item.activeTour.periodRecord.title}} ({{item.activeTour.startDate | date:'dd'}}/{{item.activeTour.endDate | date:'dd MM YYYY'}}) </td>
+                        
+                        <td class="name">{{item.activeTour.quota}}</td>
+                        <td class="name">{{item.contactFirstName}} {{item.contactLastName}}</td> -->
+                        <td>
+                            <a class="btn btn-sm btn-warning ml-3" routerLink="/reservation/manage/{{item.code}}">
+                                <i class='bx bx-show'></i> {{'VİEW-RESERVATİONS' | translate}}
+                            </a>
+                            <a class="btn btn-sm btn-danger ml-3" (click)="deleteReservation(item)">
+                                <i class='bx bx-show'></i> {{'DELETE' | translate}}
+                            </a>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+            
+    </div>
+</div>

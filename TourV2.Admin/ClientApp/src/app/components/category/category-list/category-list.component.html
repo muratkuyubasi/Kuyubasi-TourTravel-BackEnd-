@@ -1,0 +1,49 @@
+
+<app-breadcrumb [title]="'CATEGORIES' | translate" [subTitle]="'CATEGORY_LIST' | translate"></app-breadcrumb>
+<div class="card recent-orders-box mb-30">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3>{{'CATEGORY_LIST' | translate}}</h3>
+
+        <div class="dropdown">
+            <button routerLink="/category/manage" class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class='bx bx-plus' ></i>
+            </button>
+            
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>{{'CATEGORY' | translate}}</th>
+                        <th>{{'STATUS' | translate}}</th>
+                        <th>{{'SHOWCASE' | translate}}</th>
+
+                        <th></th>
+                        
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let category of categories">
+                        <td class="name">{{category.title}}</td>
+                        <td><span class="badge {{category.isActive ? 'badge-primary': 'badge-danger'}} badge-primary">{{category.isActive ? 'Aktif':'Pasif'}}</span></td>
+                        <td><span class="badge {{category.showCase ? 'badge-primary': 'badge-danger'}} badge-primary">{{category.showCase ? 'Aktif':'Pasif'}}</span></td>
+
+                        <td>
+                            <a class="btn btn-sm btn-warning ml-3" routerLink="/category/manage/{{category.code}}">
+                            <i class='bx bx-show'></i> {{'VIEW' | translate}}
+                            </a>
+                            <a class="btn btn-sm btn-danger ml-3" (click)="deleteCategory(category)">
+                                <i class='bx bx-trash'></i> {{'DELETE' | translate}}
+                                </a>
+                        </td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

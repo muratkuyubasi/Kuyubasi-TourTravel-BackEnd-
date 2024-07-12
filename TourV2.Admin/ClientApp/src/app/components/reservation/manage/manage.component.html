@@ -1,0 +1,332 @@
+<app-breadcrumb  [title]="isEditMode ? 'EDIT' : 'ADD'" [subTitle]="'RESERVATION'"></app-breadcrumb>
+<div class="add-listing-box mb-30">
+    <section class="listing-area mb-30">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="reservation-tab" data-bs-toggle="tab" data-bs-target="#reservation" type="button" role="tab" aria-controls="reservation" aria-selected="true">Rezervasyon</button>
+            </li>
+            <li class="nav-item" role="presentation" *ngIf="isEditMode">
+                <button class="nav-link" id="person-tab" data-bs-toggle="tab" data-bs-target="#person" type="button" role="tab" aria-controls="person" aria-selected="false">Kişiler</button>
+            </li>
+           
+            
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="reservation" role="tabpanel">
+                <form [formGroup]="reservationForm">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group">
+                                    <label><i class='bx bx-duplicate'></i> Tur</label>
+                                    <select formControlName="activeTourId" name="activeTourId" class="form-control" placeholder="Tur Seçiniz">
+                                        <option value="">Tur Seçiniz</option>
+                                        <option *ngFor="let item of activetours" [value]="item.id" > {{item.tourRecord.title}} ({{item.startDate | date:'dd'}}/{{item.endDate | date:'dd MM YYYY'}}) - {{item.periodRecord.title}}</option>
+                    
+                                    </select>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <h3>{{'CONTACT' | translate}}</h3>
+                        <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
+                                <label><i class='bx bx-briefcase-alt'></i> {{'ContactFirstName' | translate}}</label>
+                                <input type="text" class="form-control" formControlName="contactFirstName" placeholder="{{'ContactFirstName' | translate}}">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
+                                <label><i class='bx bx-briefcase-alt'></i> {{'ContactLastName' | translate}}</label>
+                                <input type="text" class="form-control" formControlName="contactLastName" placeholder="{{'ContactLastName' | translate}}">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
+                                <label><i class='bx bx-briefcase-alt'></i> {{'ContactEmail' | translate}}</label>
+                                <input type="text" class="form-control" formControlName="contactEmail" placeholder="{{'ContactEmail' | translate}}">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
+                                <label><i class='bx bx-briefcase-alt'></i> {{'ContactPhone' | translate}}</label>
+                                <input type="text" class="form-control" formControlName="contactPhone" placeholder="{{'ContactPhone' | translate}}">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
+                                <label><i class='bx bx-briefcase-alt'></i> {{'NATIONALITY' | translate}}</label>
+                                <input type="text" class="form-control" formControlName="uyruk" placeholder="{{'NATIONALITY' | translate}}">
+                            </div>
+                        </div>
+                        <!-- <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
+                                <label><i class='bx bx-briefcase-alt'></i> {{'ContactNote' | translate}}</label>
+                                <input type="text" class="form-control" formControlName="note" placeholder="{{'Note' | translate}}">
+                            </div>
+                        </div> -->
+                        <!-- <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
+                                <label><i class='bx bx-briefcase-alt'></i> {{'ContactAddress' | translate}}</label>
+                                <input type="text" class="form-control" formControlName="contactAddress" placeholder="{{'ContactAddress' | translate}}">
+                            </div>
+                        </div> -->
+                        <!-- <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
+                                <label><i class='bx bx-briefcase-alt'></i> {{'ContactStreet' | translate}}</label>
+                                <input type="text" class="form-control" formControlName="contactStreet" placeholder="{{'contactStreet' | translate}}">
+                            </div>
+                        </div> -->
+                        <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
+                                <label><i class='bx bx-briefcase-alt'></i> {{'ContactPostalCode' | translate}}</label>
+                                <input type="text" class="form-control" formControlName="contactPostalCode" placeholder="{{'ContactPostalCode' | translate}}">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
+                                <label><i class='bx bx-briefcase-alt'></i> {{'ContactDoorNumber' | translate}}</label>
+                                <input type="text" class="form-control" formControlName="contactDoorNumber" placeholder="{{'ContactDoorNumber' | translate}}">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
+                                <label><i class='bx bx-briefcase-alt'></i> {{'ContactCity' | translate}}</label>
+                                <input type="text" class="form-control" formControlName="contactCity" placeholder="{{'ContactCity' | translate}}">
+                            </div>
+                        </div>
+                        <!-- <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
+                                <label><i class='bx bx-briefcase-alt'></i> {{'ContactState' | translate}}</label>
+                                <input type="text" class="form-control" formControlName="contactState" placeholder="{{'ContactState' | translate}}">
+                            </div>
+                        </div> -->
+                        <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
+                                <label><i class='bx bx-briefcase-alt'></i> {{'ContactCountry' | translate}}</label>
+                                <input type="text" class="form-control" formControlName="contactCountry" placeholder="{{'ContactCountry' | translate}}">
+                            </div>
+                        </div>
+                       <div class="col-lg-3 col-md-3 form-group">
+                            <div class="sidebar-widgets">
+                                <label><i class='bx bx-briefcase-alt'></i> {{'INVOICE' | translate}}:</label>
+                                <div class=" box">
+                                    <span class="title">{{reservationForm.get('isDifferentInvoice').value ? 'Farklı İsme':'Aynı İsme'}}</span>
+                                    <label class="switch">
+                                        <input type="checkbox" formControlName="isDifferentInvoice">
+                                        <span></span>
+                                    </label>
+                                </div>
+                            </div>
+            
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="reservationForm.get('isDifferentInvoice').value">
+                        <h3>{{'INVOICE' | translate}}</h3>
+                        <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
+                                <label><i class='bx bx-briefcase-alt'></i> {{'InvoiceTitle' | translate}}</label>
+                                <input type="text" class="form-control" formControlName="invoiceTitle" placeholder="{{'InvoiceTitle' | translate}}">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
+                                <label><i class='bx bx-briefcase-alt'></i> {{'TaxNumber' | translate}}</label>
+                                <input type="text" class="form-control" formControlName="taxNumber" placeholder="{{'TaxNumber' | translate}}">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
+                                <label><i class='bx bx-briefcase-alt'></i> {{'TaxAdministration' | translate}}</label>
+                                <input type="text" class="form-control" formControlName="taxAdministration" placeholder="{{'TaxAdministration' | translate}}">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
+                                <label><i class='bx bx-briefcase-alt'></i> {{'InvoiceStreet' | translate}}</label>
+                                <input type="text" class="form-control" formControlName="invoiceStreet" placeholder="{{'InvoiceStreet' | translate}}">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
+                                <label><i class='bx bx-briefcase-alt'></i> {{'InvoicePostalCode' | translate}}</label>
+                                <input type="text" class="form-control" formControlName="invoicePostalCode" placeholder="{{'InvoicePostalCode' | translate}}">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
+                                <label><i class='bx bx-briefcase-alt'></i> {{'InvoiceDoorNumber' | translate}}</label>
+                                <input type="text" class="form-control" formControlName="invoiceDoorNumber" placeholder="{{'InvoiceDoorNumber' | translate}}">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
+                                <label><i class='bx bx-briefcase-alt'></i> {{'InvoiceAddress' | translate}}</label>
+                                <input type="text" class="form-control" formControlName="invoiceAddress" placeholder="{{'InvoiceAddress' | translate}}">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
+                                <label><i class='bx bx-briefcase-alt'></i> {{'InvoiceCity' | translate}}</label>
+                                <input type="text" class="form-control" formControlName="invoiceCity" placeholder="{{'InvoiceCity' | translate}}">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
+                                <label><i class='bx bx-briefcase-alt'></i> {{'InvoiceState' | translate}}</label>
+                                <input type="text" class="form-control" formControlName="invoiceState" placeholder="{{'InvoiceState' | translate}}">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
+                                <label><i class='bx bx-briefcase-alt'></i> {{'invoiceCountry' | translate}}</label>
+                                <input type="text" class="form-control" formControlName="invoiceCountry" placeholder="{{'invoiceCountry' | translate}}">
+                            </div>
+                        </div>
+                        <!-- <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
+                                <label><i class='bx bx-briefcase-alt'></i> {{'TotalAmount' | translate}}</label>
+                                <input type="text" class="form-control" formControlName="totalAmount" placeholder="{{'TotalAmount' | translate}}">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
+                                <label><i class='bx bx-briefcase-alt'></i> {{'AvaliableBalance' | translate}}</label>
+                                <input type="text" class="form-control" formControlName="avaliableBalance" placeholder="{{'AvaliableBalance' | translate}}">
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <button [disabled]="!reservationForm.valid" (click)="saveReservation()">{{'SAVE' | translate}}</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="tab-pane fade show" id="person" role="tabpanel">
+                <form [formGroup]="reservationPersonForm">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4">
+                            <div class="form-group">
+                                    <label><i class='bx bx-duplicate'></i> {{'PRICE' |translate}}
+                                    <span style="color:brown" *ngIf="extraPrice">{{extraPrice}} ek ücret uygulanır</span>
+                                    </label>
+                                    <select formControlName="tourPriceId" (change)="setPrice($event)" name="tourPriceId" class="form-control" placeholder="Ücret Seçiniz">
+                                        <option value="">Ücret Seçiniz</option>
+                                        <option *ngFor="let item of tourPrices" [value]="item.id" > {{item.title}} {{item.price}}</option>
+                                    </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4">
+                            <div class="form-group">
+                                <label><i class='bx bx-duplicate'></i> Hareket Noktası </label>
+                                <select formControlName="tourDepartureId" name="tourDepartureId" class="form-control" placeholder="Ücret Seçiniz">
+                                    <option value="">Hareket Noktası Seçiniz</option>
+                                    <option *ngFor="let item of tourDepartures" [value]="item.id" > {{item.title}}</option>
+                                </select>
+                                
+                            </div>
+                        </div>
+                        <!-- <div class="col-lg-4 col-md-4">
+                            <div class="form-group" >
+                                <label><i class='bx bx-duplicate'></i> {{'IDENTIFICATION_NO' | translate}} </label>
+                                <input type="text" class="form-control" formControlName="identificationNumber">
+                                
+                            </div>
+                        </div> -->
+                        <div class="col-lg-4 col-md-4">
+                            <div class="form-group" >
+                                <label><i class='bx bx-duplicate'></i> {{'FIRST_NAME' | translate}} </label>
+                                <input type="text" class="form-control" formControlName="firstName">
+                                
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4">
+                            <div class="form-group" >
+                                <label><i class='bx bx-duplicate'></i> {{'LAST_NAME' | translate}} </label>
+                                <input type="text" class="form-control" formControlName="lastName">
+                                
+                            </div>
+                        </div>
+                        <!-- <div class="col-lg-3 col-md-3">
+                            <div class="form-group" >
+                                <label><i class='bx bx-duplicate'></i> {{'EMAIL' | translate}} </label>
+                                <input type="text" class="form-control" formControlName="email">
+                            </div>
+                        </div> -->
+                        <div class="col-lg-3 col-md-3">
+                            <div class="form-group" >
+                                <label><i class='bx bx-duplicate'></i> {{'PHONE' | translate}} </label>
+                                <input type="text" class="form-control" formControlName="phone">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3">
+                            <div class="form-group" >
+                                <label><i class='bx bx-duplicate'></i> {{'NATIONALITY' | translate}} </label>
+                                <input type="text" class="form-control" formControlName="uyruk">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3">
+                            <div class="form-group" >
+                                <label><i class='bx bx-duplicate'></i> {{'BIRTHDAY' | translate}} </label>
+                                <input type="date" class="form-control" formControlName="birthDay" placeholder="{{'BIRTHDAY' | translate}}">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3">
+                            <div class="form-group" >
+                                <label><i class='bx bx-duplicate'></i> {{'GENDER' | translate}} </label>
+                                <select formControlName="gender" class="form-control">
+                                    <option value="">Seçiniz</option>
+                                    <option value="1">Erkek</option>
+                                    <option value="0">Kadın</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3">
+                            <button [disabled]="!reservationForm.valid" (click)="savePerson()">{{'SAVE' | translate}}</button>
+                        </div>
+                    </div>
+                </form>
+                <hr />
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>{{'FIRST_NAME' | translate}}</th>
+                                <th>{{'LAST_NAME' | translate}}</th>
+                                <th>{{'BIRTHDAY' | translate}}</th>
+                                <th>{{'PRICE' | translate}}</th>
+                                <th>{{'PHONE' | translate}}</th>
+                                <th>{{'PASSPORT' | translate}}</th>
+
+                                <th></th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of reservation?.reservationPersons">
+                                <td>{{item.firstName}}</td>
+                                <td>{{item.lastName}}</td>
+                                <td>{{item.birthDay | date:'dd-MM-yyyy'}}</td>
+                                <td>{{getTourPersonPrice(item.tourPriceId)}}</td>
+                                <td>{{item.phone}}</td>
+                                <td ><a href="{{item.filePath}}" target="_blank">
+                                    <img style="width: 5%;" src="/assets/img/Reservasyonpdf.webp" title="aaa" width="104" height="142">
+                                  </a></td>
+                                <td>
+                                    <a class="btn btn-sm btn-warning ml-3" (click)="updatePerson(item)">
+                                        <i class='bx bx-show'></i> {{'VIEW' | translate}}
+                                        </a>
+                                        <a class="btn btn-sm btn-danger ml-3" (click)="deletePerson(item)">
+                                            <i class='bx bx-trash'></i> {{'DELETE' | translate}}
+                                        </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+   
+</div>

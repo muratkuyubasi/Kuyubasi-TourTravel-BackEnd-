@@ -1,0 +1,156 @@
+<div class="breadcrumb-area">
+    <!-- <h1>Invoice</h1> -->
+
+    <ol class="breadcrumb">
+        <!-- <li class="item"><a routerLink="/"><i class='bx bx-home-alt'></i></a></li> -->
+
+        <li class="item">Toplam Kayıt</li>
+
+        <li class="item">{{educationModel.data.length}}</li>
+        <button class="btn btn-success btn-sm m-right-10" (click)="exportExcel()">
+            <i class="fa-solid fa-download"></i>
+            Excel
+        </button>
+    </ol>
+</div>
+
+<div class="card recent-orders-box mb-30">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3>Değerler Eğitimi Formu</h3>
+
+
+        <div class="dropdown">
+            
+            <div class="dropdown-menu">
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <i class='bx bx-show'></i> View
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <i class='bx bx-edit-alt'></i> Edit
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <i class='bx bx-trash'></i> Delete
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <i class='bx bx-printer'></i> Print
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <i class='bx bx-download'></i> Download
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Sıra</th>
+                        <th>Kayıt formunu dolduran kişi</th>
+                        <th>Öğrencinin Adı Soyadı</th>
+                        <th>Din Hizmetleri Ataşeliği</th>
+                        <th>Cami</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let item of educationModel?.data; let i =index">
+                        <td>{{i+1}}</td>
+                        <td>{{ item?.personType=== 1 ? 'Öğrencinin annesiyim' : item?.personType === 2 ? 'Öğrencinin babasıyım' :
+                            (item?.personType === 3 ? 'Cami din görevlisiyim' : (item?.personType === 4 ? 'Öğrenci' : ' '))}}</td>
+                        <td>{{item?.studentNameSurname}}</td>
+                        <td>{{item?.state.name}}</td>
+                        <td>{{item?.mosque.name}}</td>
+                        <td>
+                            <a class="btn btn-sm btn-warning ml-3" routerLink="/activetour/manage/{{item.id}}">
+                            <i class='bx bx-show'></i> {{'VIEW' | translate}}
+                            </a>
+                            <a class="btn btn-sm btn-danger ml-3" >
+                                <i class='bx bx-trash'></i> {{'DELETE' | translate}}
+                                </a>
+                        </td>
+                    </tr>
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<table id="excel-table" class="exportExcel">
+    <tr>
+        <th>GENEL S. NO</th>
+        <th>Kayıt formunu dolduran kişi</th>
+        <th>Öğrencinin Adı Soyadı</th>
+        <th>Öğrencinin doğum tarihi</th>
+        <th>Öğrencinin cinsiyeti</th>
+        <th>Öğrencinin pasaport numarası</th>
+        <th>Öğrencinin uyruğu</th>
+        <th>Öğrencinin adresi</th>
+        <th>Öğrencinin cep telefon numarası (Almanya)</th>
+        <th>Öğrencinin cep telefon numarası (Türkiye)</th>
+        <th>Bağlı olduğunuz Din Hizmetleri Ataşeliği bölgesi</th>
+        <th>Cami</th>
+        <th>Hangi havaalanından uçmak istersiniz?</th>
+        <th>Pasaport</th>
+        <th>Kimlik</th>
+        <th>Dekont</th>
+        <th>Aktif öğrenci misiniz?</th>
+
+        <!-- <th>Gezi ücretini havale ettiniz mi?</th>
+        <th>Öğrencinin Babasının Adı Soyadı</th>
+        <th>Öğrencinin Babasının Telefonu</th>
+        <th>Öğrencinin Annesinin Adı Soyadı</th>
+        <th>Öğrencinin Annesinin Telefonu</th>
+        <th>Caminizin din görevlisinin adı ve soyadı</th>
+        <th>Caminizin din görevlisinin telefon numarası</th>
+        <th>Havale yapan hesap sahibinin adı ve soyadı</th>
+        <th>Lütfen havale tarihini giriniz</th>
+        <th>Lütfen havale dekontundaki havale işlem numarasını giriniz</th> -->
+    </tr>
+    <tr *ngFor="let item of educationModel?.data; let i =index">
+        <td>{{i+1}}</td>
+        <td>{{ item?.personType=== 1 ? 'Öğrencinin annesiyim' : item?.personType === 2 ? 'Öğrencinin babasıyım' :
+            (item?.personType === 3 ? 'Cami din görevlisiyim' : (item?.personType === 4 ? 'Diğer' : ' '))}}</td>
+        <td>{{ item?.studentNameSurname}}</td>
+        <td>{{ item?.studentbirthdate | date:'dd-MM-YYYY' }}</td>
+        <td>{{ item?.studentGender === 0 ? 'Kız' : (item?.studentGender === 1 ? 'Erkek' :' ') }}</td>
+        <td>{{ item?.studentPassportNumber}}</td>
+        <td>{{item?.nationality === 1 ? 'Almanya Vatandaşı' : item?.nationality === 2 ? 'Türkiye Vatandaşı' :
+            (item.nationality === 3 ? 'ABD Vatandaşı' : (item?.nationality === 4 ? 'Fransa Vatandaşı' : ' '))}}</td>
+        <td>{{ item?.studentAddress}}</td>
+        <td>{{ item?.studentMobilePhoneNumberGermany}}</td>
+        <td>{{ item?.studentMobilePhoneNumberTurkey }}</td>
+        <td>{{item?.state.name}}</td>
+        <td>{{item?.mosque.name}}</td>
+        <td>{{item?.airport === 1 ? 'Düsseldor' : item?.airport === 2 ? 'Frankfurt' : (item?.airport === 3 ?
+            'Nürnberg' : (item?.airport === 4 ? 'Stutgart' : (item?.airport === 5 ? 'Berlin' : (item?.airport
+            === 6 ? 'Hamburg' : ' '))))}}</td>
+            <td><a href="https://portal.zsureisen.eu/{{item?.pasaportPath}}">Tıkla</a></td>
+
+            <td><a href="https://portal.zsureisen.eu/{{item?.identificationPath}}">Tıkla</a></td>
+
+            <td><a href="https://portal.zsureisen.eu/{{item?.receiptPath}}">Tıkla</a></td>
+            <td>{{item?.isPrice == false ? 'Hayır' : (item?.isPrice == true ? 'Evet' :' ') }}</td>
+
+        <!-- <td>{{item?.isPrice == false ? 'Hayır' : (item?.isPrice == true ? 'Evet' :' ') }}</td>
+        <td>{{item?.studentFatherNameSurname}}</td>
+        <td>{{ item?.studentFatherPhone }}</td>
+        <td>{{ item?.studentMotherNameSurname}}</td>
+        <td>{{ item?.studentMotherPhone }}</td>
+        <td>{{ item?.mosqueReligiousOfficialFullName}}</td>
+        <td>{{ item?.mosqueReligiousOfficialPhone }}</td>
+        <td>{{ item?.transferFullName }}</td>
+        <td>{{ item?.tranferDate | date:'dd-MM-YYYY' }}</td>
+        <td>{{ item?.transferTransactionNumber}}</td> -->
+        
+
+
+
+
+          
+    </tr>
+</table>

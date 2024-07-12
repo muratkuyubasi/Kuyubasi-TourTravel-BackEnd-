@@ -1,0 +1,57 @@
+
+<app-breadcrumb [title]="'ACTIVE_TOURS' | translate" [subTitle]="'ACTIVE_TOUR_LIST' | translate"></app-breadcrumb>
+<div class="card recent-orders-box mb-30">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3>{{'ACTIVE_TOUR_LIST' | translate}}</h3>
+
+        <div class="dropdown">
+            <button routerLink="/activetour/manage" class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class='bx bx-plus' ></i>
+            </button>
+            
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>{{'ACTIVETOUR' | translate}}</th>
+                        <th>{{'PERIOD' | translate}}</th>
+                        <th>Tıklanma Sayısı</th>
+                        <th>{{'REGION' | translate}}</th>
+                        <th>{{'STATUS' | translate}}</th>
+                        <th>{{'SHOWCASE' | translate}}</th>
+
+                        <th></th>
+                        
+                        
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let item of activetours">
+                        <td class="name">{{item.tourRecord.title}}</td>
+                        
+                        <td>{{item.periodRecord.title}}</td>
+                        <td>{{item.tourClicks.length}}</td>
+                        <td>{{item.regionRecord.title}}</td>
+                        <td><span class="badge {{item.isActive ? 'badge-primary': 'badge-danger'}} badge-primary">{{item.isActive ? 'Aktif':'Pasif'}}</span></td>
+                        <td><span class="badge {{item.showCase ? 'badge-primary': 'badge-danger'}} badge-primary">{{item.showCase ? 'Aktif':'Pasif'}}</span></td>
+
+                        <td>
+                            <a class="btn btn-sm btn-warning ml-3" routerLink="/activetour/manage/{{item.id}}">
+                            <i class='bx bx-show'></i> {{'VIEW' | translate}}
+                            </a>
+                            <a class="btn btn-sm btn-danger ml-3" (click)="deleteActiveTour(item)">
+                                <i class='bx bx-trash'></i> {{'DELETE' | translate}}
+                                </a>
+                        </td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

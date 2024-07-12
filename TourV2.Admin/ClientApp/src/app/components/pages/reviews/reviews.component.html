@@ -1,0 +1,135 @@
+<div class="breadcrumb-area">
+    <h1>Dashboard</h1>
+
+    <ol class="breadcrumb">
+        <li class="item"><a routerLink="/"><i class='bx bx-home-alt'></i></a></li>
+
+        <li class="item">Dashboard</li>
+
+        <li class="item">Yorumlar</li>
+    </ol>
+</div>
+
+<div class="card visitor-reviews-box mb-30">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3>Yorum istekleri</h3>
+
+        <div class="dropdown">
+            <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                <i class='bx bx-dots-horizontal-rounded'></i>
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <i class='bx bx-show'></i> View
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <i class='bx bx-edit-alt'></i> Edit
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <i class='bx bx-trash'></i> Delete
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <i class='bx bx-printer'></i> Print
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <i class='bx bx-download'></i> Download
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div class="user-review" *ngFor="let item of getcommentModel.data">
+            <div *ngIf="item.isActive== false">
+
+            <div class="btn-box">
+                <button type="button" (click)="changeActive(item.id)" class="btn btn-sm btn-success">Aktif</button>
+                <button type="button"(click)="changeDelete(item.id)" class="btn btn-sm btn-danger ml-3">Sil</button>               
+            </div>
+            <span class="date d-block">{{item.creationDate| date:'dd/MM/yyyy' :'TR' }}</span>
+            <img src="assets/img/user1.jpg" alt="image">
+
+            <div class="review-rating">
+                <div class="review-stars">
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                </div>
+
+                <span class="d-inline-block">{{item.activeTour.shortDescription}}</span><br>
+                <span>{{item.email}}</span>
+            </div>
+            <span class="d-block sub-comment">{{item.fullName}}</span>
+            <p>{{item.comment}}</p>
+        </div>
+        </div>
+    </div>
+</div>
+<div class="card visitor-reviews-box mb-30">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3>Onaylanmış yorumlar</h3>
+
+        <div class="dropdown">
+            <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                <i class='bx bx-dots-horizontal-rounded'></i>
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <i class='bx bx-show'></i> View
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <i class='bx bx-edit-alt'></i> Edit
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <i class='bx bx-trash'></i> Delete
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <i class='bx bx-printer'></i> Print
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <i class='bx bx-download'></i> Download
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div class="user-review" *ngFor="let item of getcommentModel.data">
+            <div *ngIf="item.isActive== true">
+
+                <div class="btn-box">
+                    <!-- <button type="button" [ngClass]="{'btn-success': getcommentModel.isActive == true, 'btn-danger': getcommentModel.isActive == false}">Aktif</button> -->
+                    <button type="button" (click)="changeActive(item.id)" class="btn btn-sm btn-warning ml-3">Pasif</button>
+                    <button type="button"  *ngIf="item.point== 10" (click)="changePopular(item.id)" style="background-color: blue;" class="btn btn-sm btn">Popüler</button>
+                    <button type="button" *ngIf="item.point== 0"  (click)="changePopular(item.id)" class="btn btn-sm btn-success">Popüler Yorum</button>
+
+
+                </div>
+                <span class="date d-block">{{item.creationDate| date:'dd/MM/yyyy' :'TR' }}</span>
+                <img src="assets/img/user1.jpg" alt="image">
+
+                <div class="review-rating">
+                    <div class="review-stars">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                    </div>
+
+                    <span class="d-inline-block">{{item.activeTour.shortDescription}}</span><br>
+                    <span>{{item.email}}</span>
+                </div>
+
+                <span class="d-block sub-comment">{{item.fullName}}</span>
+                <p>{{item.comment}}</p>
+            </div>
+        </div>
+
+
+    </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="close-btn-modal" (click)="onCancel()">
+    <i class="fa-solid fa-xmark fa-lg"></i>
+</div>
+<div class="container">
+    <div mat-dialog-content>
+        <form class="row" [formGroup]="form">
+            <div class="form-group">
+                <label>{{"PERIOD" | translate}}</label>
+                <input type="text" formControlName="name" class="form-control" placeholder="{{'PERIOD' | translate}}">
+                <div *ngIf="form.get('name')?.invalid && (form.get('name')?.dirty || form.get('name')?.touched)"
+                    class="alert">
+                    {{'THIS_FIELD_CANNOT_BE_LEFT_BLANK'|translate}}
+                </div>
+            </div>
+            <div class="form-group col-md-6 status-switch" >
+                <label for="status">{{"STATUS" | translate}}</label>
+                <mat-slide-toggle formControlName="isActive">
+                    <span *ngIf="form.get('isActive').value">{{'ACTIVE' | translate}}</span>
+                    <span *ngIf="!form.get('isActive').value">{{'INACTIVE' | translate}}</span>
+                </mat-slide-toggle>
+            </div>
+        </form>
+    </div>
+
+    <div mat-dialog-actions>
+        <ng-container *ngIf="!isEditMode">
+            <button [disabled]="isLoadingButton " (click)="save()"
+                class="btn btn-success btn-sm" type="button">
+                <i class="fas fa-save"></i>
+                <span *ngIf="!isLoadingButton">{{'SAVE' |translate}}</span>
+                <span *ngIf="isLoadingButton">
+                    <i class="fa fa-spinner fa-spin"></i> {{'SAVING' | translate}}
+                </span>
+            </button>
+        </ng-container>
+        <ng-container *ngIf="isEditMode">
+            <button [disabled]="isLoadingButton" (click)="save()"
+                class="btn btn-success btn-sm" type="button">
+                <i class="fas fa-save"></i>
+                <span *ngIf="!isLoadingButton">{{"UPDATE" | translate}}</span>
+                <span *ngIf="isLoadingButton">
+                    <i class="fa fa-spinner fa-spin"></i> {{'UPDATING'|translate}}
+                </span>
+            </button>
+        </ng-container>
+
+        <button class="btn btn-danger btn-sm" (click)="onCancel()">
+            <i class="fas fa-times-circle"></i>
+            {{"CANCEL" | translate}}
+        </button>
+    </div>
+</div>

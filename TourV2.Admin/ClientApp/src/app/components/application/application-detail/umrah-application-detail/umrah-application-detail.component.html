@@ -1,0 +1,181 @@
+<div class="row align-items-center justify-content-between">
+    <div class="col-md-auto col-sm-auto">
+        <div class="content-header">
+            <h1>{{('UMRAH APPLICATION DETAIL' | translate)}}</h1>
+        </div>
+
+    </div>
+    <div class="col-md-auto col-sm-auto">
+        <h4 class="widget-title">
+            <button class="btn btn-success btn-sm m-right-10" [routerLink]="['/application/umrah-edit',candidate.id]"
+                *hasClaim="'application_edit'">
+                <i class="fas fa-pencil-alt"></i>
+                {{ 'EDIT' | translate }}
+            </button>
+        </h4>
+    </div>
+
+</div>
+<div class="add-listing-box mb-30">
+    <h3>Kişisel Bilgiler</h3>
+    <div class="table-container ">
+        <table>
+            <tr>
+                <td class="underline">Ad:</td>
+                <td>{{ candidate?.name | uppercase }}</td>
+            </tr>
+            <tr>
+                <td class="underline">Soyad:</td>
+                <td>{{ candidate?.surname | uppercase }}</td>
+            </tr>
+            <tr>
+                <td class="underline">Telefon:</td>
+                <td>{{ candidate?.phoneNumber }}</td>
+            </tr>
+            <tr>
+                <td class="underline">Doğum Yeri:</td>
+                <td>{{ candidate?.placeOfBirth | uppercase }}</td>
+            </tr>
+            <tr>
+                <td class="underline">Cinsiyet:</td>
+                <td>{{ candidate?.genderId === 1 ? 'KADIN' : (candidate?.genderId === 2 ? 'ERKEK' :' ') }}</td>
+
+            </tr>
+            <tr>
+                <td class="underline">Medeni Durum:</td>
+                <td>{{ candidate?.maritalStatusId === 1 ? 'EVLİ' : (candidate?.maritalStatusId === 2 ? 'BEKAR' :' ') }}
+                </td>
+            </tr>
+            <tr>
+                <td class="underline">Doğum Tarihi:</td>
+                <td>{{ candidate?.dateOfBirth | date:'dd-MM-YYYY' }}</td>
+            </tr>
+            <tr>
+                <td class="underline">Uyruğu:</td>
+                <td>{{ candidate?.nationality | uppercase }}</td>
+            </tr>
+            <tr>
+                <td class="underline">Baba Adı:</td>
+                <td>{{ candidate?.fatherName | uppercase }}</td>
+            </tr>
+            <tr>
+                <td class="underline">Anne Adı:</td>
+                <td>{{ candidate?.motherName | uppercase }}</td>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <h3>Adres Bilgileri</h3>
+    <div class="table-container ">
+        <table>
+            <tr>
+                <td class="underline">Adres:</td>
+                <td>{{ candidate?.address | uppercase }}</td>
+            </tr>
+            <tr>
+                <td class="underline">Şehir:</td>
+                <td>{{ candidate?.city | uppercase }}</td>
+            </tr>
+            <tr>
+                <td class="underline">Ülke:</td>
+                <td>{{ candidate?.country | uppercase }}</td>
+            </tr>
+            <tr>
+                <td class="underline">Posta Kodu:</td>
+                <td>{{ candidate?.postCode | uppercase }}</td>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <h3>Pasaport Bilgileri</h3>
+    <div class="table-container">
+        <table>
+            <tr>
+                <td class="underline">Pasaport Numarası:</td>
+                <td>{{ candidate?.passportNumber }}</td>
+            </tr>
+            <tr>
+                <td class="underline">Pasaport Veriliş Yeri:</td>
+                <td>{{ candidate?.passportGivenPlace | uppercase }}</td>
+            </tr>
+            <tr>
+                <td class="underline">Pasaport Veriliş Tarihi:</td>
+                <td>{{ candidate?.passportGivenDate | date:'dd-MM-YYYY' }}</td>
+            </tr>
+            <tr>
+                <td class="underline">Pasaport Son Kullanma Tarihi:</td>
+                <td>{{ candidate?.passportExpirationDate | date:'dd-MM-YYYY' }}</td>
+            </tr>
+
+        </table>
+    </div>
+    <br>
+    <h3>Diğer Bilgiler</h3>
+    <div class="table-container">
+        <table>
+            <tr>
+                <td class="underline">Oda Türü:</td>
+                <td>{{ candidate?.roomType.roomTypes | uppercase }}</td>
+            </tr>
+            <tr>
+                <td class="underline">En Yakın Dernek:</td>
+                <td>{{ candidate?.closestAssociation.name | uppercase }}</td>
+            </tr>
+            <tr>
+                <td class="underline">Gidiş Havalimanı:</td>
+                <td>{{ candidate?.departureAirport.name | uppercase }}</td>
+            </tr>
+            <tr>
+                <td class="underline">Dönüş Havalimanı:</td>
+                <td>{{ candidate?.landingAirport.name | uppercase }}</td>
+            </tr>
+            <tr>
+                <td class="underline">Açıklama:</td>
+                <td>{{ candidate?.explanation | uppercase }}</td>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <h3 style="width: 100%;  margin-top: 23px;">Fotoğraflar</h3>
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6 picture">
+            <div class="single-instructor-member mb-30">
+                <div class="member-content">
+                    <h5>{{'PASSPORT_PICTURE'|translate}}</h5>
+                </div>
+                <div class="member-image" *ngIf="candidate.passportPicture!== ''">
+                    <a target="_blank" [href]="photoUrl+candidate.passportPicture"><img
+                            [src]="photoUrl+candidate.passportPicture" alt="images"></a>
+                </div>
+                <div class="member-image" *ngIf="candidate.passportPicture== ''">
+                    {{'NO_DATA_FOUND' | translate}}
+                </div>
+
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6 picture">
+            <div class="single-instructor-member mb-30">
+                <div class="member-content">
+                    <h5>{{'HEADSHOT_PICTURE'|translate}}</h5>
+                </div>
+                <div class="member-image" *ngIf="candidate.headshotPicture!== '' ">
+                    <a target="_blank" [href]="photoUrl+candidate.headshotPicture"> <img
+                            [src]="photoUrl+candidate.headshotPicture" alt="images"></a>
+                </div>
+                <div class="member-image" *ngIf="candidate.headshotPicture== '' ">
+                    {{'NO_DATA_FOUND' | translate}}
+                </div>
+
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-0 offset-md-3 offset-sm-3 picture">
+
+            <div class="application-card-pdf">
+       
+            </div>
+        </div>
+    </div>
+
+   
+
+</div>

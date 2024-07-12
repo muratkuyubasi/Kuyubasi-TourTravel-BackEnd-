@@ -1,0 +1,77 @@
+<div class="row align-items-center justify-content-between">
+    <div class="col-md-auto col-sm-auto">
+        <div class="content-header">
+            <h1> {{'Values-Education-Form'|translate}}</h1>
+        </div>
+    </div>
+    <div class="col-md-auto col-sm-auto">
+        <h4 class="widget-title">
+            <button class="btn btn-success btn-sm m-right-10" (click)="managePeriod(1)">
+                <i class="fas fa-plus"></i>
+                {{ 'ADD_NEW_PERIODS' | translate }}
+            </button>
+        </h4>
+    </div>
+</div>
+
+<div class="loading-shade" *ngIf="isLoadingResults">
+    <mat-spinner></mat-spinner>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <div class="box-body">
+                <div class="table-container table">
+                    <div class="add-listing-box mb-30">
+
+                        <section class="listing-area mb-30">
+                            <table class="table table-hover">
+                                <thead class="table-primary">
+                                    <tr>
+                                        <th scope="col">{{'PERIOD'|translate}}</th>
+                                        <th scope="col">{{'STATUS'|translate}}</th>
+                                        <th scope="col">{{'ACTION'|translate}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <ng-container *ngIf="hajjPeriods?.data" style="overflow: auto;">
+                                        <tr *ngFor="let item of hajjPeriods.data">
+                                            <td>{{ item?.name}}</td>
+                                            <td>
+                                                <span *ngIf="item.isActive === true"
+                                                class="badge badge-success">{{'ACTIVE'|translate}}</span>
+                                                <span *ngIf="item.isActive === false"
+                                                class="badge badge-danger">{{'INACTIVE'|translate}}</span>
+                                            </td>
+                                            <td>
+                                                <button (click)="managePeriod(1,item)" 
+                                                    class="btn btn-success btn-sm m-right-10" type="button">
+                                                    <i class="fas fa-pencil-alt"></i>
+                                                    <span class="d-none d-sm-inline">{{ 'EDIT' | translate }}</span>
+                                                </button>
+                                                <button [routerLink]="['/application/education-list',item.name,item.id]"
+                                                    
+                                                    class="btn btn-info btn-sm m-right-10" type="button">
+                                                    <i class="fa-solid fa-circle-info"></i>
+                                                    <span class="d-none d-sm-inline">{{ 'SEE_ALL_APPLICATIONS' |
+                                                        translate }}</span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </ng-container>
+                                    <ng-container *ngIf="hajjPeriods?.length==0">
+                                        {{'NO_DATA_FOUND' | translate}}
+                                    </ng-container>
+                                </tbody>
+
+                            </table>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

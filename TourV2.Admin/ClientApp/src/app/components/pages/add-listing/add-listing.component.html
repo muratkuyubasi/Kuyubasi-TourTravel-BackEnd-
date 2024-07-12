@@ -1,0 +1,64 @@
+<div class="breadcrumb-area">
+    <h1>Slider</h1>
+
+    <!-- <ol class="breadcrumb">
+        <li class="item"><a routerLink="/"><i class='bx bx-home-alt'></i></a></li>
+
+        <li class="item">Dashboard</li>
+
+        <li class="item">Listing</li>
+    </ol> -->
+</div>
+
+<section class="listing-area mb-30">
+    <div class="row">
+        <div class="col-lg-4 col-sm-12 col-md-6"   *ngFor="let item of getContentModel">
+            <div class="single-listing-item">
+                <div class="listing-image">
+                    <a routerLink="/listing-details" class="d-block"><img  img [src]="path+'Announcement/'+item.fileUrl" ></a>
+
+
+                 
+                </div>
+
+                <div class="listing-content">
+                   
+
+                    <h3><a routerLink="/listing-details" class="d-inline-block">{{item.title}}</a></h3>
+
+                    <!-- <span class="location"><i class="bx bx-map"></i> </span> -->
+                </div>
+
+                <div class="listing-box-footer">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <!-- <div class="price">
+                            <span data-toggle="tooltip" data-placement="top" title="Ultra Hight">
+                                $1500 - $2000
+                            </span>
+                        </div> -->
+
+                        <!-- <div class="listing-option-list">
+                            <a routerLink="/" data-toggle="tooltip" data-placement="top" title="Find Directions"><i class='bx bx-directions'></i></a>
+                            <a routerLink="/" data-toggle="tooltip" data-placement="top" title="Save"><i class='bx bx-heart'></i></a>
+                            <a routerLink="/" data-toggle="tooltip" data-placement="top" title="On the Map"><i class='bx bx-map'></i></a>
+                        </div> -->
+                    </div>
+                </div>
+
+                <div class="listing-badge">Aktif!</div>
+                <div class="listing-badge">Aktif!</div>
+
+                
+
+                <td>
+                  
+                    <a class="btn btn-sm btn-danger ml-3" (click)="changeDelete(item.id)">
+                        <i class='bx bx-trash'></i> {{'DELETE' | translate}}
+                        </a>
+                </td>
+            </div>
+        </div>
+
+
+    </div>
+</section>

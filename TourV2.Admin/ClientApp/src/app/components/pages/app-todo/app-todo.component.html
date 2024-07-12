@@ -1,0 +1,142 @@
+<div class="todo-content-area mt-20">
+    <div class="sidebar-left">
+        <div class="sidebar">
+          
+        </div>
+    </div>
+
+    <div class="content-right">
+        <div class="todo-area">
+            <div class="todo-list-wrapper">
+                <div class="todo-list">
+                    <div class="todo-list-header d-flex align-items-center">
+                        <div class="header-left d-flex align-items-center mr-3">
+                            <div class="checkbox mr-3">
+                                <input class="inp-cbx" id="cbx-all" type="checkbox" style="display: none;"/>
+                                <label class="cbx" for="cbx-all">
+                                    <span>
+                                        <svg width="12px" height="10px" viewbox="0 0 12 10">
+                                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                        </svg>
+                                    </span>
+                                </label>
+                            </div>
+
+                            <ul class="list-inline m-0 d-flex">
+                                <li class="list-inline-item email-delete">
+                                    <button type="button" class="btn-icon">
+                                        <i class='bx bx-trash'></i>
+                                    </button>
+                                </li>
+
+                                <li class="list-inline-item email-unread">
+                                    <button type="button" class="btn-icon">
+                                        <i class='bx bx-envelope'></i>
+                                    </button>
+                                </li>
+
+                                <li class="list-inline-item email-unread">
+                                    <div class="dropdown">
+                                        <button class="dropdown-toggle btn-icon" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class='bx bx-info-square'></i>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                                <i class='bx bx-edit'></i> Drafts
+                                            </a>
+                                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                                <i class='bx bx-info-square'></i> Spam
+                                            </a>
+                                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                                <i class='bx bx-trash'></i> Delete
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="list-inline-item email-unread">
+                                    <div class="dropdown">
+                                        <button class="dropdown-toggle btn-icon" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class='bx bx-purchase-tag-alt'></i>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                                <i class='bx bx-duplicate'></i> Categories
+                                            </a>
+                                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                                <i class='bx bxs-user-detail'></i> Social
+                                            </a>
+                                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                                <i class='bx bx-up-arrow'></i> Updates
+                                            </a>
+                                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                                <i class='bx bx-chat'></i> Forums
+                                            </a>
+                                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                                <i class='bx bx-trending-up'></i> Promotions
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="list-inline-item email-unread">
+                                    <div class="dropdown">
+                                        <button class="dropdown-toggle btn-icon" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class='bx bx-filter-alt'></i>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                                <i class='bx bx-sort-up'></i> Ascending
+                                            </a>
+                                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                                <i class='bx bx-sort-down'></i> Descending
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="header-right w-100">
+                            <form>
+                                <label><i class="bx bx-search"></i></label>
+                                <input type="text" class="form-control" placeholder="Search email...">
+                            </form>
+                        </div>
+                    </div>
+
+                    <ul class="list-wrapper" data-simplebar>
+                        <li class="todo-list-item" *ngFor="let item of getlistModel">
+                            <div class="checkbox">
+                                <input class="inp-cbx" id="cbx" type="checkbox" style="display: none;"/>
+                                <label class="cbx" for="cbx">
+                                    <span>
+                                        <svg width="12px" height="10px" viewbox="0 0 12 10">
+                                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                        </svg>
+                                    </span>
+                                </label>
+                            </div>
+
+                            <div class="todo-item-title">
+                                <img src="assets/img/user1.jpg" data-toggle="tooltip" data-placement="top" title="Sarah Taylor" alt="image">
+                                <h3>{{item.email}}</h3>
+                                <span class="date d-block">{{item.creationDate}}</span>
+                            </div>
+
+                            <div class="todo-item-action">
+                                <a routerLink="/app-email-compose" class="edit"><i class='bx bx-envelope'></i></a>
+                                <a routerLink="/app-todo" class="delete"><i class='bx bx-trash'></i></a>
+                                
+                            </div>
+                        </li>
+
+                    
+
+                     
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,71 @@
+<nav class="navbar top-navbar navbar-expand">
+    <div class="collapse navbar-collapse" id="navbarSupportContent">
+        <div class="responsive-burger-menu d-block d-lg-none">
+            <span class="top-bar"></span>
+            <span class="middle-bar"></span>
+            <span class="bottom-bar"></span>
+        </div>
+       
+        <form class="nav-search-form d-none ml-auto d-md-block">
+            <!-- <label><i class='bx bx-search'></i></label> -->
+            <!-- <input type="text" class="form-control" placeholder="{{'SEARCH' | translate}}"> -->
+        </form>
+        <ul class="navbar-nav right-nav align-items-center">
+            <li class="nav-item dropdown language-switch-nav-item">
+                <button class="nav-link dropdown-toggle" role="button" (click)="toggleClass2()">
+                    <img [src]="language.flag" alt="image">
+                    <span>{{ language.name }} <i class='bx bx-chevron-down'></i></span>
+                </button>
+                <div class="dropdown-menu" [class.active]="classApplied2">
+                    <a *ngFor="let language of languages" (click)="setNewLanguageRefresh(language.lang)" class="dropdown-item d-flex justify-content-between align-items-center">
+                        <span>{{ language.name }}</span>
+                        <img [src]="language.flag" alt="flag">
+                    </a>
+                   
+                </div>
+            </li>
+
+            
+            <li class="nav-item dropdown profile-nav-item">
+                <button class="nav-link dropdown-toggle" role="button" (click)="toggleClass5()">
+                    <div class="menu-profile">
+                        <span class="name">{{'HI' | translate}}! {{appUserAuth.firstName}}</span>
+                        <img *ngIf="appUserAuth.profilePhoto" class="rounded-circle" [src]="appUserAuth.profilePhoto">
+                        <img *ngIf="!appUserAuth.profilePhoto" src="assets/img/user1.jpg" class="rounded-circle" alt="image">
+                    </div>
+                </button>
+                <div class="dropdown-menu" [class.active]="classApplied5">
+                    <div class="dropdown-header d-flex flex-column align-items-center">
+                        <div class="figure mb-3">
+                            <img *ngIf="appUserAuth.profilePhoto" class="rounded-circle" [src]="appUserAuth.profilePhoto">
+                        <img *ngIf="!appUserAuth.profilePhoto" src="assets/img/user1.jpg" class="rounded-circle" alt="image">
+                        </div>
+                        <div class="info text-center">
+                            <span class="name">{{appUserAuth.firstName}} {{appUserAuth.lastName}}</span>
+                            <p class="mb-3 email">{{appUserAuth.email}}</p>
+                        </div>
+                    </div>
+                    <div class="dropdown-body">
+                        <ul class="profile-nav p-0 pt-3">
+                            <li class="nav-item">
+                                <a [routerLink]="['my-profile']" class="nav-link">
+                                    <i class='bx bx-user'></i> <span>{{'PROFILE' | translate}}</span>
+                                </a>
+                            </li>
+                           
+                        </ul>
+                    </div>
+                    <div class="dropdown-footer">
+                        <ul class="profile-nav">
+                            <li class="nav-item">
+                                <a (click)="onLogout()" class="nav-link">
+                                    <i class='bx bx-log-out'></i> <span>{{'LOGOUT' | translate}}</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>

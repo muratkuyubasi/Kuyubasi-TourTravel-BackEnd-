@@ -1,0 +1,62 @@
+<app-breadcrumb  [title]="isEditMode ? 'EDIT' : 'ADD'" [subTitle]="'DEPARTURES'"></app-breadcrumb>
+<div class="add-listing-box mb-30">
+    <h3>{{'DEPARTURES' | translate}}</h3>
+    <form [formGroup]="departureForm">
+        <div class="row">
+            <div class="col-lg-9 col-md-9">
+                <div class="form-group">
+                    <label><i class='bx bx-briefcase-alt'></i> {{'TITLE' | translate}}</label>
+                    <input type="text" class="form-control" formControlName="title" placeholder="{{'TITLE' | translate}}">
+                </div>
+                <div *ngIf="departureForm.get('title').touched && departureForm.get('title').errors">
+                    <div class="text-danger" *ngIf="departureForm.get('title').errors?.required">
+                      {{'TITLE_IS_REQUIRED' | translate }}
+                    </div>
+                  </div>
+            </div>
+            <div class="col-lg-3 col-md-3 form-group">
+                <div class="sidebar-widgets">
+                    <label><i class='bx bx-briefcase-alt'></i> {{'STATUS' | translate}}:</label>
+                    <div class=" box">
+                        <span class="title">{{departureForm.get('isActive').value ? 'Aktif':'Pasif'}}</span>
+                        <label class="switch">
+                            <input type="checkbox" formControlName="isActive">
+                            <span></span>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-5 col-md-5">
+                <div class="form-group">
+                    <label><i class='bx bx-briefcase-alt'></i> {{'LOCATION' | translate}}</label>
+                    <input type="text" class="form-control" formControlName="latLng" placeholder="{{'LOCATION' | translate}}">
+                </div>
+                
+            </div>
+            <div class="col-lg-4 col-md-4">
+                <div class="form-group">
+                    <label><i class='bx bx-briefcase-alt'></i> {{'TIME' | translate}}</label>
+                    <input type="datetime-local" class="form-control" formControlName="departureTime" placeholder="{{'TIME' | translate}}">
+                </div>
+                
+            </div>
+            <div class="col-lg-3 col-md-3 form-group">
+                <div class="sidebar-widgets">
+                    <label><i class='bx bx-briefcase-alt'></i> {{'MAIN' | translate}}:</label>
+                    <div class=" box">
+                        <span class="title">{{departureForm.get('isMain').value ? 'Evet':'Hayır'}}</span>
+                        <label class="switch">
+                            <input type="checkbox" formControlName="isMain">
+                            <span></span>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-12 col-md-12">
+                <button [disabled]="!departureForm.valid" (click)="saveDeparture()">{{'SAVE' | translate}}</button>
+            </div>
+        </div>
+    </form>
+</div>

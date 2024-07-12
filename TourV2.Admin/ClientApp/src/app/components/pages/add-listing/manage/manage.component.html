@@ -1,0 +1,489 @@
+<app-breadcrumb  [title]="isEditMode ? 'EDIT' : 'ADD'" [subTitle]="'ACTIVETOUR'"></app-breadcrumb>
+
+<div class="add-listing-box mb-30">
+    <h3>{{'ACTIVETOUR' | translate}}</h3>
+    <section class="listing-area mb-30">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="basic-tab" data-bs-toggle="tab" data-bs-target="#basic" type="button" role="tab" aria-controls="basic" aria-selected="true">Temel</button>
+            </li>
+            <li class="nav-item" role="presentation" *ngIf="isEditMode">
+                <button class="nav-link" id="price-tab" data-bs-toggle="tab" data-bs-target="#price" type="button" role="tab" aria-controls="price" aria-selected="false">Ücretler</button>
+            </li>
+            <li class="nav-item" role="presentation" *ngIf="isEditMode">
+                <button class="nav-link" id="day-tab" data-bs-toggle="tab" data-bs-target="#day" type="button" role="tab" aria-controls="day" aria-selected="false">Günler</button>
+            </li>
+            <li class="nav-item" role="presentation" *ngIf="isEditMode">
+                <button class="nav-link" id="specification-tab" data-bs-toggle="tab" data-bs-target="#specification" type="button" role="tab" aria-controls="specification" aria-selected="false">Özellikler</button>
+            </li>
+            <li class="nav-item" role="presentation" *ngIf="isEditMode">
+                <button class="nav-link" id="departure-tab" data-bs-toggle="tab" data-bs-target="#departure" type="button" role="tab" aria-controls="departure" aria-selected="false">Hareket Noktaları</button>
+            </li>
+            <li class="nav-item" role="presentation" *ngIf="isEditMode">
+                <button class="nav-link" id="media-tab" data-bs-toggle="tab" data-bs-target="#media" type="button" role="tab" aria-controls="media" aria-selected="false">Görseller</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="basic" role="tabpanel">
+                <form [formGroup]="activetourForm">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group">
+                                <label><i class='bx bx-duplicate'></i> Tur</label>
+                                <select formControlName="tourRecordId" name="tourRecordId" class="form-control" placeholder="Tur Seçiniz">
+                                    <option value="">Tur Seçiniz</option>
+                                    <option *ngFor="let item of tours" [value]="item.tourRecordId" > {{item.title}} </option>
+                
+                                </select>
+                            </div>
+                            
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group">
+                                <label><i class='bx bx-duplicate'></i> Kategori</label>
+                                <select formControlName="tourCategoryId" name="tourCategoryId" class="form-control" placeholder="Tur Seçiniz">
+                                    <option value="">Kategori Seçiniz</option>
+                                    <option *ngFor="let item of categories" [value]="item.categoryRecordId" > {{item.title}} </option>
+                
+                                </select>
+                            </div>
+                            
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group">
+                                <label><i class='bx bx-duplicate'></i> Dönem</label>
+                                <select formControlName="periodRecordId" name="periodRecordId" class="form-control" placeholder="Tur Seçiniz">
+                                    <option value="">Dönem Seçiniz</option>
+                                    <option *ngFor="let item of periods" [value]="item.periodRecordId" > {{item.title}} </option>
+                
+                                </select>
+                            </div>
+                            
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group">
+                                <label><i class='bx bx-duplicate'></i> Bölge</label>
+                                <select formControlName="regionRecordId" name="regionRecordId" class="form-control" placeholder="Tur Seçiniz">
+                                    <option value="">Bölge Seçiniz</option>
+                                    <option *ngFor="let item of regions" [value]="item.regionRecordId" > {{item.title}} </option>
+                
+                                </select>
+                            </div>
+                            
+                        </div>
+                        <div class="col-lg-12 col-md-12">
+                            <div class="form-group">
+                                <label><i class='bx bx-briefcase-alt'></i> {{'SHORT_DESCRIPTION' | translate}}</label>
+                                <input type="text" class="form-control" formControlName="shortDescription" placeholder="{{'SHORT_DESCRIPTION' | translate}}">
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12">
+                            <div class="form-group">
+                                <label><i class='bx bx-briefcase-alt'></i> {{'DESCRIPTION' | translate}}</label>
+                                <textarea cols="30" rows="7" class="form-control"  formControlName="description" placeholder="{{'DESCRIPTION' | translate}}"></textarea>
+                                
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-4">
+                            <div class="form-group">
+                                <label><i class='bx bx-briefcase-alt'></i> {{'QUOTA' | translate}}</label>
+                                <input type="text" class="form-control" formControlName="quota" placeholder="{{'QUOTA' | translate}}">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 form-group">
+                            <div class="form-group">
+                                <label><i class='bx bx-briefcase-alt'></i> {{'STARTDATE' | translate}}</label>
+                                <input type="date" class="form-control" formControlName="startDate" placeholder="{{'STARTDATE' | translate}}">
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 col-md-4 form-group">
+                            <div class="form-group">
+                                <label><i class='bx bx-briefcase-alt'></i> {{'ENDDATE' | translate}}</label>
+                                <input type="date" class="form-control" formControlName="endDate" placeholder="{{'ENDDATE' | translate}}">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 form-group">
+                            <div class="form-group">
+                                <label><i class='bx bx-briefcase-alt'></i> {{'TRANSPORTATION' | translate}}</label>
+                                <input type="text" class="form-control" formControlName="transportationTitle" placeholder="{{'TRANSPORTATION' | translate}}">
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-3 col-md-3 form-group">
+                            <div class="sidebar-widgets">
+                                <label><i class='bx bx-briefcase-alt'></i> {{'ISCHILD' | translate}}:</label>
+                                <div class=" box">
+                                    <span class="title">{{activetourForm.get('isChild').value ? 'Evet':'Hayır'}}</span>
+                                    <label class="switch">
+                                        <input type="checkbox" formControlName="isChild">
+                                        <span></span>
+                                    </label>
+                                </div>
+                            </div>
+            
+                        </div>
+                        <div class="col-lg-3 col-md-3 form-group">
+                            <div class="sidebar-widgets">
+                                <label><i class='bx bx-briefcase-alt'></i> {{'CHILDCOUNT' | translate}}:</label>
+                                <input type="text" class="form-control" formControlName="childQuota" placeholder="{{'CHILDCOUNT' | translate}}" >
+                            </div>
+            
+                        </div>
+                        <div class="col-lg-3 col-md-3 form-group">
+                            <div class="sidebar-widgets">
+                                <label><i class='bx bx-briefcase-alt'></i> {{'DAYCOUNT' | translate}}:</label>
+                                <input type="text" class="form-control" formControlName="dayCount" placeholder="{{'DAYCOUNT' | translate}}">
+                            </div>
+            
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 form-group">
+                            <div class="sidebar-widgets">
+                                <label><i class='bx bx-briefcase-alt'></i> {{'STATUS' | translate}}:</label>
+                                <div class=" box">
+                                    <span class="title">{{activetourForm.get('isActive').value ? 'Aktif':'Pasif'}}</span>
+                                    <label class="switch">
+                                        <input type="checkbox" formControlName="isActive">
+                                        <span></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 form-group">
+                            <div class="sidebar-widgets">
+                                <label><i class='bx bx-briefcase-alt'></i> {{'SHOWCASE' | translate}}:</label>
+                                <div class=" box">
+                                    <span class="title">{{activetourForm.get('showCase').value ? 'Aktif':'Pasif'}}</span>
+                                    <label class="switch">
+                                        <input type="checkbox" formControlName="showCase">
+                                        <span></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12">
+                            <button [disabled]="!activetourForm.valid" (click)="saveActiveTour()">{{'SAVE' | translate}}</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="tab-pane fade" *ngIf="isEditMode" id="price" role="tabpanel">
+                <form [formGroup]="priceForm">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4">
+                            <div class="form-group">
+                                <label><i class='bx bx-duplicate'></i> Açıklama</label>
+                                <input formControlName="title" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2">
+                            <div class="form-group">
+                                <label><i class='bx bx-duplicate'></i> Ücret</label>
+                                <input formControlName="price" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2">
+                            <div class="form-group">
+                                <label><i class='bx bx-duplicate'></i> Extra Ücret</label>
+                                <input formControlName="extraPrice" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2">
+                            <div class="form-group">
+                                <label><i class='bx bx-duplicate'></i> İndirim</label>
+                                <input formControlName="discount" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 form-group">
+                            <div class="sidebar-widgets">
+                                <label><i class='bx bx-briefcase-alt'></i> Çocuk Ücreti?:</label>
+                                <div class=" box">
+                                    <span class="title">{{priceForm.get('isChildPrice').value ? 'Evet':'Hayır'}}</span>
+                                    <label class="switch">
+                                        <input type="checkbox" formControlName="isChildPrice">
+                                        <span></span>
+                                    </label>
+                                </div>
+                            </div>
+            
+                        </div>
+                        
+                        <div class="col-lg-12 col-md-12">
+                            <button [disabled]="!priceForm.valid" (click)="savePrice()">{{'SAVE' | translate}}</button>
+                        </div>
+                    </div>
+                </form>
+                <hr />
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>{{'DESCRIPTION' | translate}}</th>
+                                <th>{{'PRICE' | translate}}</th>
+                                <th>{{'EXTRAPRICE' | translate}}</th>
+                                <th>{{'DISCOUNT' | translate}}</th>
+                                <th>{{'ISCHILDPRICE' | translate}}</th>
+                                <th></th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of activetour?.tourPrices">
+                                <td>{{item.title}}</td>
+                                <td>{{item.price}}</td>
+                                <td>{{item.extraPrice}}</td>
+                                <td>{{item.discount}}</td>
+                                <td>{{item.isChildPrice ? 'EVET':'HAYIR'}}</td>
+                                <td>
+                                    <a class="btn btn-sm btn-warning ml-3" (click)="updatePrice(item)">
+                                        <i class='bx bx-show'></i> {{'VIEW' | translate}}
+                                        </a>
+                                        <a class="btn btn-sm btn-danger ml-3" (click)="deletePrice(item)">
+                                            <i class='bx bx-trash'></i> {{'DELETE' | translate}}
+                                        </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane fade" *ngIf="isEditMode" id="day" role="tabpanel">
+                <form [formGroup]="dayForm">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group">
+                                <label><i class='bx bx-duplicate'></i> Gün</label>
+                                <input formControlName="title" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12">
+                            <div class="form-group">
+                                <label><i class='bx bx-duplicate'></i> Açıklama</label>
+                                <input formControlName="description" class="form-control" />
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-12 col-md-12">
+                            <button [disabled]="!priceForm.valid" (click)="saveDay()">{{'SAVE' | translate}}</button>
+                        </div>
+                    </div>
+                </form>
+                <hr />
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>{{'DAY' | translate}}</th>
+                                <th>{{'DESCRIPTION' | translate}}</th>
+                                <th></th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of activetour.tourDays">
+                                <td>{{item.title}}</td>
+                                <td>{{item.description}}</td>
+                                <td>
+                                    <a class="btn btn-sm btn-warning ml-3" (click)="updateDay(item)">
+                                        <i class='bx bx-show'></i> {{'VIEW' | translate}}
+                                        </a>
+                                        <a class="btn btn-sm btn-danger ml-3" (click)="deleteDay(item)">
+                                            <i class='bx bx-trash'></i> {{'DELETE' | translate}}
+                                        </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane fade" *ngIf="isEditMode" id="specification" role="tabpanel">
+                <form [formGroup]="specForm">
+                    <div class="row">
+                        <div class="col-lg-10 col-md-10">
+                            <div class="form-group">
+                                <label><i class='bx bx-duplicate'></i> Özellik</label>
+                                <input formControlName="specification" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 form-group">
+                            <div class="sidebar-widgets">
+                                <label><i class='bx bx-briefcase-alt'></i> Özellik Ücreti?:</label>
+                                <div class=" box">
+                                    <span class="title">{{specForm.get('inPrice').value ? 'Evet':'Hayır'}}</span>
+                                    <label class="switch">
+                                        <input type="checkbox" formControlName="inPrice">
+                                        <span></span>
+                                    </label>
+                                </div>
+                            </div>
+            
+                        </div>
+                        
+                        <div class="col-lg-12 col-md-12">
+                            <button [disabled]="!specForm.valid" (click)="saveSpec()">{{'SAVE' | translate}}</button>
+                        </div>
+                    </div>
+                </form>
+                <hr />
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>{{'SPECIFICATION' | translate}}</th>
+                                <th>{{'INPRICE' | translate}}</th>
+                                <th></th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of activetour?.tourSpecifications">
+                                <td>{{item.specification}}</td>
+                                <td>{{item.inPrice ? 'Evet': 'Hayır'}}</td>
+                                <td>
+                                    <a class="btn btn-sm btn-warning ml-3" (click)="updateSpec(item)">
+                                        <i class='bx bx-show'></i> {{'VIEW' | translate}}
+                                        </a>
+                                        <a class="btn btn-sm btn-danger ml-3" (click)="deleteSpec(item)">
+                                            <i class='bx bx-trash'></i> {{'DELETE' | translate}}
+                                        </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane fade" *ngIf="isEditMode" id="departure" role="tabpanel">
+                <form [formGroup]="departureForm">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group">
+                                <label><i class='bx bx-duplicate'></i> Hareket Noktası</label>
+                                <select formControlName="departureRecordId" name="departureRecordId" class="form-control" placeholder="Hareket Noktası Seçiniz">
+                                    <option value="">Hareket Noktası Seçiniz</option>
+                                    <option *ngFor="let item of departures" [value]="item.departureRecordId" > {{item.title}} </option>
+                
+                                </select>
+                            </div>
+                            
+                        </div>
+                        <div class="col-lg-4 col-md-4 form-group">
+                            <div class="form-group">
+                                <label><i class='bx bx-briefcase-alt'></i> {{'DEPARTURE_TIME' | translate}}</label>
+                                <input type="datetime-local" class="form-control" formControlName="departureTime" placeholder="{{'departureTime' | translate}}">
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 form-group">
+                            <div class="sidebar-widgets">
+                                <label><i class='bx bx-briefcase-alt'></i> İlk Hareket?:</label>
+                                <div class=" box">
+                                    <span class="title">{{departureForm.get('isMain').value ? 'Evet':'Hayır'}}</span>
+                                    <label class="switch">
+                                        <input type="checkbox" formControlName="isMain">
+                                        <span></span>
+                                    </label>
+                                </div>
+                            </div>
+            
+                        </div>
+                        
+                        <div class="col-lg-12 col-md-12">
+                            <button [disabled]="!departureForm.valid" (click)="saveDeparture()">{{'SAVE' | translate}}</button>
+                        </div>
+                    </div>
+                </form>
+                <hr />
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>{{'DEPARTURE' | translate}}</th>
+                                <th>{{'DEPARTURE_TIME' | translate}}</th>
+                                <th>{{'ISMAIN' | translate}}</th>
+                                <th></th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of activetour.tourDepartures">
+                                <td>{{item.departureRecord?.title}}</td>
+                                <td>{{item.departureTime | date:'dd-MM-YYYY HH:mm'}}</td>
+                                <td>{{item.isMain ? 'Evet': 'Hayır'}}</td>
+                                <td>
+                                    <a class="btn btn-sm btn-warning ml-3" (click)="updateDeparture(item)">
+                                        <i class='bx bx-show'></i> {{'VIEW' | translate}}
+                                        </a>
+                                        <a class="btn btn-sm btn-danger ml-3" (click)="deleteDeparture(item)">
+                                            <i class='bx bx-trash'></i> {{'DELETE' | translate}}
+                                        </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane fade" *ngIf="isEditMode" id="media" role="tabpanel">
+                <form>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="form-group">
+                                <div class="add-list-media-header">
+                                    <label class="radio">
+                                       
+                                        <input type="radio" name="header-media" value="background-image" checked>
+                                        <span>Fotoğraf</span>
+                                    </label>
+                                </div>
+            
+                                <div class="add-list-media-wrap">
+                                    <div class="text">
+                                        <span>
+                                            <i class='bx bx-image-add'></i>
+                                            Sürükle bırak / Seç
+                                        </span>
+                                    </div>
+                                    <input type="file" class="upload" (change)="fileEvent($event)" #fileInput>
+                                    <!-- <input hidden (change)="fileEvent($event)" #fileInput name="logo" type="file" name="Profile Photo"
+                                    fxFlex="30"> -->
+                                </div>
+                            </div>
+                        </div>
+            
+                        <div class="col-lg-4" *ngFor="let item of activetour.tourMedias">
+                            <div class="card-body">
+                                <div class="user-review">
+                                    <img [src]="imgURL+'/Tours/'+item.fileName" alt="image">
+                                    <div class="btn-box">
+                                        <button type="button" (click)="deleteMedia(item)" class="btn btn-sm btn-danger">Sil</button>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                      
+                        <!-- <div class="col-lg-4 col-md-4">
+                            <div class="form-group">
+                                <div class="add-list-media-header">
+                                    <label class="radio">
+                                        <input type="radio" name="header-media" value="video">
+                                        <span>Video</span>
+                                    </label>
+                                </div>
+            
+                                <div class="form-group">
+                                    <label><i class='bx bxl-youtube'></i> Youtube:</label>
+                                    <input type="text" class="form-control" placeholder="https://www.youtube.com/">
+                                </div>
+            
+                             
+                            </div>
+                        </div> -->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+</div>

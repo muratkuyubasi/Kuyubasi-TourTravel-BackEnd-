@@ -1,0 +1,259 @@
+<div class="row align-items-center justify-content-between">
+    <div class="col-md-auto col-sm-auto">
+        <div class="content-header">
+            <h1>{{('HAJJ_APPLICATION_EDIT' | translate)}}</h1>
+        </div>
+    </div>
+
+</div>
+<div class="add-listing-box mb-30">
+
+    <section class="listing-area mb-30">
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="basic" role="tabpanel">
+                <h3 class="form-title">{{'USER_INFORMATION' | translate}}</h3>
+                <form class="row" [formGroup]="manageForm">
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <label><i class='bx bx-user'></i> {{'FIRST_NAME' | translate}}</label>
+                            <input type="text" class="form-control" formControlName="name">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <label><i class='bx bx-user'></i> {{'LAST_NAME' | translate}}</label>
+                            <input type="text" class="form-control" formControlName="surname">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <label> <i class='bx bx-user'></i> {{'PHONE_NUMBER' | translate}}</label>
+                            <input type="text" class="form-control" formControlName="phoneNumber">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <label><i class='bx bx-user'></i> {{'SWEDEN_IDENTIFICATION_NUMBER' | translate}}</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" formControlName="swedenIdentificationNumber">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <label><i class='bx bx-user'></i> {{'IDENTIFICATION_NUMBER' | translate}}</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" formControlName="turkeyIdentificationNumber">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-2">
+                        <div class="form-group">
+                            <label><i class='bx bx-user'></i> {{'BIRTH_PLACE' | translate}}</label>
+                            <input type="text" class="form-control" formControlName="placeOfBirth">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <label><i class='bx bx-user'></i> {{'BIRTHDATE' | translate}}</label>
+                            <input type="date" class="form-control" formControlName="dateOfBirth">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <label><i class='bx bx-user'></i> {{'GENDER' | translate}}</label>
+                            <select formControlName="genderId" name="genderId" class="form-control">
+                                <option *ngFor="let item of gender" [ngValue]="item.id"> {{item.name}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-2">
+                        <div class="form-group">
+                            <label><i class='bx bx-user'></i> {{'NATIONALITY' | translate}}</label>
+                            <input type="text" class="form-control" formControlName="nationality">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <label><i class='bx bx-user'></i> {{'FATHER_NAME' | translate}}</label>
+                            <input type="text" class="form-control" formControlName="fatherName">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <label><i class='bx bx-user'></i> {{'MOTHER_NAME' | translate}}</label>
+                            <input type="text" class="form-control" formControlName="motherName">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <label><i class='bx bx-user'></i> {{'MARITAL_STATUS' | translate}}</label>
+                            <select formControlName="maritalStatusId" name="maritalStatusId" class="form-control">
+                                <option *ngFor="let item of maritalStatus" [ngValue]="item.id"> {{item.name}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <br><br>
+                    <br><br>
+                    <h3 class="form-title">{{'ADDRESS_INFORMATION' | translate}}</h3>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <label> <i class='bx bx-user'></i> {{'COUNTRY' | translate}}</label>
+                            <input type="text" class="form-control" formControlName="country">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <label><i class='bx bx-user'></i> {{'CITY' | translate}}</label>
+                            <input type="text" class="form-control" formControlName="city">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <label><i class='bx bx-user'></i> {{'POST_CODE' | translate}}</label>
+                            <input type="text" class="form-control" formControlName="postCode">
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-4">
+                        <div class="form-group">
+                            <label> <i class='bx bx-user'></i> {{'ADDRESS' | translate}}</label>
+                            <textarea class="form-control" rows="2" formControlName="address"> </textarea>
+                        </div>
+                    </div>
+                    <br><br>
+                    <h3 class="form-title">{{'PASSPORT_INFORMATION' | translate}}</h3>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <label><i class='bx bx-user'></i> {{'PASSPORT_NUMBER' | translate}}</label>
+                            <input type="text" class="form-control" formControlName="passportNumber">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <label><i class='bx bx-user'></i> {{'PASSPORT_GIVEN_DATE' | translate}}</label>
+                            <input type="date" class="form-control" formControlName="passportGivenDate">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <label> <i class='bx bx-user'></i> {{'PASSPORT_EXPIRATION_DATE' | translate}}</label>
+                            <input type="date" class="form-control" formControlName="passportExpirationDate">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <label> <i class='bx bx-user'></i> {{'PASSPORT_GIVEN_PLACE' | translate}}</label>
+                            <input type="text" class="form-control" formControlName="passportGivenPlace">
+                        </div>
+                    </div>
+
+                    <br><br>
+                    <h3 class="form-title">{{'OTHER_INFORMATION' | translate}}</h3>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <label><i class='bx bx-user'></i> {{'DEPARTURE_AIRPORT' | translate}}</label>
+                            <select formControlName="departureAirportId" name="departureAirportId" class="form-control">
+                                <option *ngFor="let item of airports" [ngValue]="item.id"> {{item.name}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <label> <i class='bx bx-user'></i> {{'LANDING_AIRPORT' | translate}}</label>
+                            <select formControlName="landingAirportId" name="landingAirportId" class="form-control">
+                                <option *ngFor="let item of airports" [ngValue]="item.id"> {{item.name}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <label> <i class='bx bx-user'></i> {{'ROOM_TYPE' | translate}}</label>
+                            <select formControlName="roomTypeId" name="roomTypeId" class="form-control">
+                                <option *ngFor="let item of roomType" [ngValue]="item.id"> {{item.roomTypes}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <label><i class='bx bx-user'></i> {{'CLOSEST_ASSOCIATION' | translate}}</label>
+                            <select formControlName="closestAssociationId" name="closestAssociationId"
+                                class="form-control">
+                                <option *ngFor="let item of association" [ngValue]="item.id"> {{item.name}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-md-4">
+                        <div class="form-group">
+                            <label><i class='bx bx-user'></i> {{'EXPLANATION' | translate}}</label>
+                            <textarea class="form-control" rows="2" formControlName="explanation"></textarea>
+                        </div>
+                    </div>
+                    <h3 style="width: 100%;">Fotoğraflar</h3>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-6 picture">
+                            <div class="single-instructor-member mb-30">
+                                <div class="member-content">
+                                    <h5>{{'PASSPORT_PICTURE'|translate}}</h5>
+                                </div>
+                                <div class="member-image" *ngIf="candidate.passportPicture!== ''">
+                                    <a target="_blank" [href]="photoUrl+candidate.passportPicture"><img
+                                            [src]="photoUrl+candidate.passportPicture" alt="images"></a>
+                                </div>
+                                <div class="member-image" *ngIf="candidate.passportPicture== ''">
+                                    {{'NO_DATA_FOUND' | translate}}
+                                </div>
+                                <div class="col-lg-12 col-md-12">
+                                    <input type="file" class="choose-a-file application" id="passportPicture"
+                                        (change)="uploadFileEvent($event,'pass')">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6 picture">
+                            <div class="single-instructor-member mb-30">
+                                <div class="member-content">
+                                    <h5>{{'HEADSHOT_PICTURE'|translate}}</h5>
+                                </div>
+                                <div class="member-image" *ngIf="candidate.headshotPicture!== '' ">
+                                    <a target="_blank" [href]="photoUrl+candidate.headshotPicture"> <img
+                                            [src]="photoUrl+candidate.headshotPicture" alt="images"></a>
+                                </div>
+                                <div class="member-image" *ngIf="candidate.headshotPicture== '' ">
+                                    {{'NO_DATA_FOUND' | translate}}
+                                </div>
+                                <div class="col-lg-12 col-md-12">
+                                    <input class="choose-a-file application" type="file" id="headshotPicture"
+                                        (change)="uploadFileEvent($event,'head')">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12">
+                        <button [disabled]="!manageForm.valid || isLoadingButton" (click)="updateManageForm()"
+                            *hasClaim="'application_edit'" class="btn btn-success btn-sm" type="button">
+                            <i class="fas fa-save"></i>
+                            <span *ngIf="!isLoadingButton">{{'UPDATE' |translate}}</span>
+                            <span *ngIf="isLoadingButton">
+                                <i class="fa fa-spinner fa-spin"></i> {{'UPDATING' | translate}}
+                            </span>
+                        </button>
+                    </div>
+
+
+
+                </form>
+
+
+            </div>
+        </div>
+    </section>
+</div>

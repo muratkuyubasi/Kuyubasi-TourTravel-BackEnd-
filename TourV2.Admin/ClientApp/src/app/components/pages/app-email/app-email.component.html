@@ -1,0 +1,205 @@
+<div class="email-content-area mt-20">
+    <div class="sidebar-left">
+        <div class="sidebar">
+            <div class="sidebar-content d-flex email-sidebar" data-simplebar>
+                <div class="email-menu">
+                    <!-- <a routerLink="/app-email-compose" class="btn btn-primary btn-block compose-btn mb-4"><i class='bx bx-plus'></i> Compose</a> -->
+
+                    <div class="list-group list-group-messages">
+                        <a routerLink="/app-email" class="list-group-item active">
+                            <i class='bx bx-envelope'></i>
+                            Gelen Kutusu
+                            <span class="badge badge-success d-inline-block">{{getlistModel?.length}}</span>
+                        </a>
+
+                        <!-- <a routerLink="/app-email" class="list-group-item">
+                            <i class='bx bx-paper-plane'></i>
+                            Sent
+                        </a>
+
+                        <a routerLink="/app-email" class="list-group-item">
+                            <i class='bx bx-edit'></i>
+                            Drafts
+                        </a>
+
+                        <a routerLink="/app-email" class="list-group-item">
+                            <i class='bx bx-star'></i>
+                            Starred
+                            <span class="badge badge-primary d-inline-block">3</span>
+                        </a>
+
+                        <a routerLink="/app-email" class="list-group-item">
+                            <i class='bx bxs-time-five'></i>
+                            Snoozed
+                        </a>
+
+                        <a routerLink="/app-email" class="list-group-item">
+                            <i class='bx bx-info-square'></i>
+                            Spam
+                        </a>
+
+                        <a routerLink="/app-email" class="list-group-item">
+                            <i class='bx bx-trash'></i>
+                            Trash
+                            <span class="badge badge-danger d-inline-block">8</span>
+                        </a> -->
+                    </div>
+
+                    <!-- <label class="d-block list-group-label text-uppercase">Labels</label>
+
+                    <div class="list-group list-group-labels">
+                        <a routerLink="/app-email" class="list-group-item">
+                            Categories
+                        </a>
+
+                        <a routerLink="/app-email" class="list-group-item">
+                            Social
+                        </a>
+
+                        <a routerLink="/app-email" class="list-group-item">
+                            Updates
+                        </a>
+
+                        <a routerLink="/app-email" class="list-group-item">
+                            Forums
+                        </a>
+
+                        <a routerLink="/app-email" class="list-group-item">
+                            Promotions
+                        </a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-right">
+        <div class="email-area">
+            <div class="email-list-wrapper">
+                <div class="email-list">
+                    <div class="email-list-header d-flex align-items-center">
+                        <div class="header-left d-flex align-items-center mr-3">
+                            <div class="checkbox mr-3">
+                                <input class="inp-cbx" id="cbx-all" type="checkbox" style="display: none;"/>
+                                <label class="cbx" for="cbx-all">
+                                    <span>
+                                        <svg width="12px" height="10px" viewbox="0 0 12 10">
+                                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                        </svg>
+                                    </span>
+                                </label>
+                            </div>
+
+                            <ul class="list-inline m-0 d-flex">
+                                <li class="list-inline-item email-delete">
+                                    <button type="button" class="btn-icon">
+                                        <i class='bx bx-trash'></i>
+                                    </button>
+                                </li>
+
+                                <li class="list-inline-item email-unread">
+                                    <button type="button" class="btn-icon">
+                                        <i class='bx bx-envelope'></i>
+                                    </button>
+                                </li>
+
+                                <li class="list-inline-item email-unread">
+                                    <div class="dropdown">
+                                        <button class="dropdown-toggle btn-icon" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class='bx bx-info-square'></i>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                                <i class='bx bx-edit'></i> Drafts
+                                            </a>
+                                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                                <i class='bx bx-info-square'></i> Spam
+                                            </a>
+                                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                                <i class='bx bx-trash'></i> Delete
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="list-inline-item email-unread">
+                                    <div class="dropdown">
+                                        <button class="dropdown-toggle btn-icon" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class='bx bx-purchase-tag-alt'></i>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                                <i class='bx bx-duplicate'></i> Categories
+                                            </a>
+                                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                                <i class='bx bxs-user-detail'></i> Social
+                                            </a>
+                                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                                <i class='bx bx-up-arrow'></i> Updates
+                                            </a>
+                                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                                <i class='bx bx-chat'></i> Forums
+                                            </a>
+                                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                                <i class='bx bx-trending-up'></i> Promotions
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="header-right w-100">
+                            <form>
+                                <label><i class="bx bx-search"></i></label>
+                                <input type="text" class="form-control" placeholder="Search email...">
+                            </form>
+                        </div>
+                    </div>
+
+                    <ul class="list-wrapper" data-simplebar >
+                        <li class="email-list-item"  *ngFor="let item of getlistModel"> 
+                            <div class="email-list-actions mr-3">
+                                <div class="checkbox">
+                                    <input class="inp-cbx" id="cbx" type="checkbox" style="display: none;"/>
+                                    <label class="cbx" for="cbx">
+                                        <span>
+                                            <svg width="12px" height="10px" viewbox="0 0 12 10">
+                                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                            </svg>
+                                        </span>
+                                    </label>
+                                </div>
+
+                                <span class="favorite">
+                                    <i class='bx bx-star'></i>
+                                </span>
+                            </div>
+
+                            <a routerLink="/app-email-read/{{item.id}}" class="email-list-detail">
+                                <div>
+                                    <img src="assets/img/user1.jpg" alt="image">
+                                    <span class="from d-block">{{item.firstName}} {{item.lastName}}</span>
+                                    <p class="mb-0 msg">{{item.subject}}</p>
+                                </div>
+
+                                <span class="date d-block">{{item.creationDate| date:'dd/MM/yyyy' :'TR' }}</span>
+                            </a>
+                        </li>
+
+                       
+                       
+                    </ul>
+                    <div class="email-list-footer d-flex justify-content-between align-items-center">
+                        <p class="mb-0">Show: 1 - 10 of 590</p>
+
+                        <div class="email-pagination-btn">
+                            <button type="submit" class="email-pagination-prev d-inline-block"><i class='bx bx-arrow-to-left'></i></button>
+                            <button type="submit" class="email-pagination-next d-inline-block"><i class='bx bx-arrow-to-right'></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

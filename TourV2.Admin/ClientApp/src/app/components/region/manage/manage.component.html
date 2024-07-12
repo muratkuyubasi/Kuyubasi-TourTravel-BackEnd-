@@ -1,0 +1,35 @@
+<app-breadcrumb  [title]="isEditMode ? 'EDIT' : 'ADD'" [subTitle]="'REGION'"></app-breadcrumb>
+<div class="add-listing-box mb-30">
+    <h3>{{'REGION' | translate}}</h3>
+    <form [formGroup]="regionForm">
+        <div class="row">
+            <div class="col-lg-9 col-md-9">
+                <div class="form-group">
+                    <label><i class='bx bx-briefcase-alt'></i> {{'TITLE' | translate}}</label>
+                    <input type="text" class="form-control" formControlName="title" placeholder="{{'TITLE' | translate}}">
+                </div>
+                <div *ngIf="regionForm.get('title').touched && regionForm.get('title').errors">
+                    <div class="text-danger" *ngIf="regionForm.get('title').errors?.required">
+                      {{'TITLE_IS_REQUIRED' | translate }}
+                    </div>  
+                  </div>
+            </div>
+            <div class="col-lg-3 col-md-3 form-group">
+                <div class="sidebar-widgets">
+                    <label><i class='bx bx-briefcase-alt'></i> {{'STATUS' | translate}}:</label>
+                    <div class=" box">
+                        <span class="title">{{regionForm.get('isActive').value ? 'Aktif':'Pasif'}}</span>
+                        <label class="switch">
+                            <input type="checkbox" formControlName="isActive">
+                            <span></span>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-12 col-md-12">
+                <button [disabled]="!regionForm.valid" (click)="saveCategory()">{{'SAVE' | translate}}</button>
+            </div>
+        </div>
+    </form>
+</div>
